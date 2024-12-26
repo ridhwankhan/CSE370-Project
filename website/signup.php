@@ -76,7 +76,7 @@ if (isset($_POST['submit'])) {
 
 <body>
     <section id="header">
-        <a href="#"><img src="img/logo.png" class="logo" alt="" /></a>
+        <a href="#"><img class="logo" src="img/logo.png" width="150" height="120" /></a>
 
         <div>
             <ul id="navbar">
@@ -128,14 +128,14 @@ if (isset($_POST['submit'])) {
 
     <footer class="section-p1">
         <div class="col">
-            <img class="logo" src="img/logo.png" />
+            <img class="logo" src="img/logo.png" width="150" height="120" />
             <h4>Contact</h4>
             <p>
-                <strong>Address: </strong> Street 2, Johar Town Block A,Lahore
+                <strong>Address: </strong> address 
 
             </p>
             <p>
-                <strong>Phone: </strong> +92324953752
+                <strong>Phone: </strong> +0171817655
             </p>
             <p>
                 <strong>Hours: </strong> 9am-5pm

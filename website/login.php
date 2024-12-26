@@ -94,11 +94,11 @@ if (isset($_POST['submit'])) {
             <img src="img/logo.png" class="logo" alt="" width="130" height="150"/>
             <h4>Contact</h4>
             <p>
-                <strong>Address: </strong> Street 2, Johar Town Block A,Lahore
+                <strong>Address: </strong> address
 
             </p>
             <p>
-                <strong>Phone: </strong> +92324953752
+                <strong>Phone: </strong> +01718175150
             </p>
             <p>
                 <strong>Hours: </strong> 9am-5pm

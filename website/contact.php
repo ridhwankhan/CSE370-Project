@@ -65,11 +65,11 @@ session_start();
             <div>
                 <li>
                     <i class="fal fa-map"></i>
-                    <p>Street 2, Johar Town Block A, Lahore</p>
+                    <p>address</p>
                 </li>
                 <li>
                     <i class="fal fa-envelope"></i>
-                    <p>l211794@lhr.nu.edu.pk</p>
+                    <p>techietokkor@gmail.com</p>
                 </li>
                 <li>
                     <i class="fal fa-phone-alt"></i>
@@ -84,7 +84,7 @@ session_start();
         </div>
         <div class="map">
             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.5655490104923!2d74.29819482695312!3d31.481135199999983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919035b866b934b%3A0x8f191ce0dac7aa28!2sFast%20University!5e0!3m2!1sen!2s!4v1679911544138!5m2!1sen!2s"
+             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6853.777513218648!2d90.42251407654734!3d23.76991556232959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7715a40c603%3A0xec01cd75f33139f5!2sBRAC%20University!5e1!3m2!1sen!2sbd!4v1735247161383!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                 width="600" height="450" style="border: 0" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
