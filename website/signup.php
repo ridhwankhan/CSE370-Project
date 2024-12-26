@@ -37,14 +37,16 @@ if (isset($_POST['submit'])) {
         echo "<script> alert('select gender'); setTimeout(function(){ window.location.href = 'signup.php'; }, 100); </script>";
         exit();
     }
-    if (preg_match('/\D/', $cnic) || strlen($cnic) != 13) {
-        echo "<script> alert('invalid cnic'); setTimeout(function(){ window.location.href = 'signup.php'; }, 100); </script>";
+    if (!preg_match('/^\d{10,17}$/', $cnic)) {
+        echo "<script> alert('Invalid Bangladeshi NID (should be 10-17 digits)'); setTimeout(function(){ window.location.href = 'signup.php'; }, 100); </script>";
         exit();
     }
-    if (preg_match('/\D/', $contact) || strlen($contact) != 11) {
-        echo "<script> alert('invalid number'); setTimeout(function(){ window.location.href = 'signup.php'; }, 100); </script>";
+    
+    if (!preg_match('/^(013|014|015|016|017|018|019)\d{8}$/', $contact)) {
+        echo "<script> alert('Invalid Bangladeshi phone number (should be 11 digits and start with valid prefixes)'); setTimeout(function(){ window.location.href = 'signup.php'; }, 100); </script>";
         exit();
     }
+    
 
     $query = "insert into `accounts` (afname, alname, phone, email,cnic, dob, username, gender,password) values ('$firstname', '$lastname', '$contact','$email', '$cnic', '$dob', '$username', '$gen','$password')";
 

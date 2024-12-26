@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
     echo "<script> alert('invalid date'); setTimeout(function(){ window.location.href = 'profile.php'; }, 10); </script>";
     exit();
   }
-  if (preg_match('/\D/', $cnic) || strlen($cnic) != 13) {
+  if (preg_match('/\D/', $cnic) || strlen($cnic) <= 10 ) {
     echo "<script> alert('invalid cnic'); setTimeout(function(){ window.location.href = 'profile.php'; }, 10); </script>";
     exit();
   }
@@ -209,7 +209,7 @@ if (isset($_GET['c'])) {
 
 <body>
     <section id="header">
-        <a href="index.php"><img src="img/logo.png" class="logo" alt="" /></a>
+        <a href="index.php"><img class="logo" src="img/logo.png" width="150" height="120" /></a>
 
         <div>
             <ul id="navbar">
@@ -588,14 +588,14 @@ if (isset($_GET['c'])) {
 
         <footer class="section-p1">
             <div class="col">
-                <img class="logo" src="img/logo.png" />
+                <img class="logo" src="img/logo.png" width="120", height="100"/>
                 <h4>Contact</h4>
                 <p>
-                    <strong>Address: </strong> Street 2, Johar Town Block A,Lahore
+                    <strong>Address: </strong> <address></address>
 
                 </p>
                 <p>
-                    <strong>Phone: </strong> +92324953752
+                    <strong>Phone: </strong> phone
                 </p>
                 <p>
                     <strong>Hours: </strong> 9am-5pm
