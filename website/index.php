@@ -12,7 +12,7 @@ if (empty($_SESSION['aid']))
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ByteBazaar</title>
+    <title>TeachiTokkor</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 
@@ -22,8 +22,10 @@ if (empty($_SESSION['aid']))
 </head>
 
 <body>
-    <section id="header">
-        <a href="index.php"><img src="img/logo.png" class="logo" alt="" /></a>
+    <!-- <section id="header">
+        <a href="index.php"><img src="img/logo.png" class="logo" alt="" /></a> -->
+    <section  id="header">
+    <a href="index.php"><img src="img/logo.png" class="logo" alt="" width="130" height="150"/></a>
 
         <div>
             <ul id="navbar">
@@ -57,10 +59,10 @@ if (empty($_SESSION['aid']))
     </section>
 
     <section id="hero">
-        <h4>Trade-in-offer</h4>
+        <!-- <h4>Trade-in-offer</h4>
         <h2>Super value deals</h2>
         <h1>On all products</h1>
-        <p>Save more with coupons & up to 70% off!</p>
+        <p>Save more with coupons & up to 70% off!</p> -->
         <a href="shop.php">
             <button>Shop Now</button>
         </a>
@@ -96,7 +98,7 @@ if (empty($_SESSION['aid']))
 
     <section id="banner" class="section-m1">
         <h4>Summer Sale</h4>
-        <h2>Up to <span>70% Off</span> - All CPUs & GPUs</h2>
+        <!-- <h2>Up to <span>70% Off</span> - All CPUs & GPUs</h2> -->
         <a href="shop.php">
             <button class="normal">Explore More</button>
         </a>
@@ -106,7 +108,7 @@ if (empty($_SESSION['aid']))
         <div class="banner-box">
             <h4>crazy deals</h4>
             <h2>Buy a combo, get one accessory free</h2>
-            <span>The best classic is on sale at ByteBazaar</span>
+            <!-- <span>The best classic is on sale at Techie Tokkor</span> -->
             <a href="shop.php">
                 <button class="white">Learn More</button>
             </a>
@@ -114,7 +116,7 @@ if (empty($_SESSION['aid']))
         <div class="banner-box banner-box2">
             <h4>Coming This Week</h4>
             <h2>Ragnar Sale</h2>
-            <span>The best classic coming on sale at ByteBazaar</span>
+            <span>The best classic coming on sale at Techie Tokkor</span>
             <a href="shop.php">
                 <button class="white">Collection</button>
             </a>
@@ -138,7 +140,9 @@ if (empty($_SESSION['aid']))
 
     <footer class="section-p1">
         <div class="col">
-            <img class="logo" src="img/logo.png" />
+            <!-- <img class="logo" src="img/logo.png" /> -->
+    
+            <img src="img/logo.png" class="logo" alt="" width="164" height="150" />
             <h4>Contact</h4>
             <p>
                 <strong>Address: </strong> Street 2, Johar Town Block A,Lahore
@@ -162,7 +166,7 @@ if (empty($_SESSION['aid']))
             <img src="img/pay/pay.png" />
         </div>
         <div class="copyright">
-            <p>2021. byteBazaar. HTML CSS </p>
+            <p>2025. Techie Tokkor. </p>
         </div>
     </footer>
 

@@ -100,7 +100,7 @@ $user = mysqli_fetch_assoc($user_result);
     </main>
 
     <footer>
-        <p>© 2024 ByteBazaar. Admin Panel</p>
+        <p>© 2025 Techie Tokkor. Admin Panel</p>
     </footer>
 </body>
 </html>

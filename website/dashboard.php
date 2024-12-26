@@ -77,7 +77,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
     </main>
 
     <footer>
-        <p>© 2024 ByteBazaar. Admin Panel</p>
+        <p>© 2025 Techie Tokkor. </p>
     </footer>
 </body>
 </html>

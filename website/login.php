@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ByteBazaar</title>
+    <title>Techie Tokkor</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 
@@ -50,7 +50,8 @@ if (isset($_POST['submit'])) {
 
 <body>
     <section id="header">
-        <a href="#"><img src="img/logo.png" class="logo" alt="" /></a>
+        <!-- <a href="#"><img src="img/logo.png" class="logo" alt="" /></a> -->
+        <a href="index.php"><img src="img/logo.png" class="logo" alt="" width="130" height="150"/></a>
 
         <div>
             <ul id="navbar">
@@ -89,7 +90,8 @@ if (isset($_POST['submit'])) {
 
     <footer class="section-p1">
         <div class="col">
-            <img class="logo" src="img/logo.png" />
+            <!-- <img class="logo" src="img/logo.png" /> -->
+            <img src="img/logo.png" class="logo" alt="" width="130" height="150"/>
             <h4>Contact</h4>
             <p>
                 <strong>Address: </strong> Street 2, Johar Town Block A,Lahore
@@ -113,7 +115,7 @@ if (isset($_POST['submit'])) {
             <img src="img/pay/pay.png" />
         </div>
         <div class="copyright">
-            <p>2021. byteBazaar. HTML CSS </p>
+            <p>2025. Techie Tokkor. </p>
         </div>
     </footer>
 

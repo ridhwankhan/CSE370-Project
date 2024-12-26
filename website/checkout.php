@@ -72,7 +72,7 @@ if (isset($_POST['sub'])) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ByteBazaar</title>
+    <title>Techie Tokkor</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 
@@ -254,7 +254,7 @@ if (isset($_POST['sub'])) {
             <img src="img/pay/pay.png" />
         </div>
         <div class="copyright">
-            <p>2021. byteBazaar. HTML CSS </p>
+            <p>2025. Techie Tokkor</p>
         </div>
     </footer>
 

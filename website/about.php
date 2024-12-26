@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ByteBazaar</title>
+    <title>Techie Tokkor</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 
@@ -25,7 +25,7 @@ session_start();
 
 <body>
     <section id="header">
-        <a href="index.php"><img src="img/logo.png" class="logo" alt="" /></a>
+    <a href="index.php"><img src="img/logo.png" class="logo" alt="" width="130" height="150"/></a>
 
         <div>
             <ul id="navbar">
@@ -59,9 +59,9 @@ session_start();
     </section>
 
     <section id="page-header" class="about-header">
-        <h2>#GameTillTheEnd</h2>
+        <h2>#Explore Till The End</h2>
 
-        <p>Providing Premium Gaming Peripherals</p>
+        <p>Providing Premium electronics </p>
     </section>
 
     <section id="about-head" class="section-p1">
@@ -69,15 +69,15 @@ session_start();
         <div>
             <h2>About Us?</h2>
             <p class="paragraph">
-                ByteBazaar is an online store that offers a wide range of high-quality computer hardware products.
+            Techie Tokkor is an online store that offers a wide range of high-quality hardware products.
                 Established
                 in
-                2010, we are committed to providing our customers with the best possible shopping experience, with a
+                2024, we are committed to providing our customers with the best possible shopping experience, with a
                 user-friendly website and excellent customer support. Shop with us for the latest computer components,
                 peripherals, and accessories from the world's leading brands.
             </p>
             <br /><br />
-            <marquee bgcolor="#ccc" loop="-1" scrollamount="5">Game till you win</marquee>
+            <marquee bgcolor="#ccc" loop="-1" scrollamount="5">Ridhwanur Rahman Khan, Owara Binte Mamun, Ridwanur Rahman</marquee>
         </div>
     </section>
 
@@ -111,14 +111,14 @@ session_start();
 
     <footer class="section-p1">
         <div class="col">
-            <img class="logo" src="img/logo.png" />
+        <img src="img/logo.png" class="logo" alt="" width="130" height="150"/>
             <h4>Contact</h4>
             <p>
-                <strong>Address: </strong> Street 2, Johar Town Block A,Lahore
+                <strong>Address: </strong> Kha 224, Bir Uttam Rafiqul Islam Ave, Dhaka 1212
 
             </p>
             <p>
-                <strong>Phone: </strong> +92324953752
+                <strong>Phone: </strong> +8801718175150 
             </p>
             <p>
                 <strong>Hours: </strong> 9am-5pm
@@ -135,7 +135,7 @@ session_start();
             <img src="img/pay/pay.png" />
         </div>
         <div class="copyright">
-            <p>2021. byteBazaar. HTML CSS </p>
+            <p>2025. Techie Tokkor</p>
         </div>
     </footer>
 

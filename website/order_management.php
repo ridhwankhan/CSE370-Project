@@ -8,8 +8,8 @@ if (!isset($_SESSION['admin_logged_in'])) {
     exit;
 }
 
-// Fetch all orders
-$result = mysqli_query($con, "SELECT * FROM orders");
+// Fetch all orders including the status
+$result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, status FROM orders");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +67,7 @@ $result = mysqli_query($con, "SELECT * FROM orders");
         </table>
     </main>
     <footer>
-        <p>© 2024 ByteBazaar. Admin Panel</p>
+        <p>© 2025 Techie Tokkor.</p>
     </footer>
 </body>
 </html>

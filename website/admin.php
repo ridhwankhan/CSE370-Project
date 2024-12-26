@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
     <section id="header">
-        <a href="index.php"><img src="img/logo.png" class="logo" alt="" /></a>
+    <a href="index.php"><img src="img/logo.png" class="logo" alt="" width="130" height="150"/></a>
         <ul id="navbar">
             <li><a href="index.php">Home</a></li>
             <li><a href="shop.php">Shop</a></li>
@@ -55,7 +55,7 @@ if (isset($_POST['submit'])) {
         <button type="submit" class="btn" name="submit">Login</button>
     </form>
     <footer>
-        <p>2024. ByteBazaar. All Rights Reserved.</p>
+        <p>2025. Techie Tokkor. All Rights Reserved.</p>
     </footer>
 </body>
 </html>

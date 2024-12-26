@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ByteBazaar</title>
+    <title>Techie Tokkor</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 
@@ -18,7 +18,7 @@ session_start();
 
 <body>
     <section id="header">
-        <a href="index.php"><img src="img/logo.png" class="logo" alt="" /></a>
+        <a href="index.php"><img src="img/logo.png" class="logo" alt="". width="150", height="140" /></a>
 
         <div>
             <ul id="navbar">
@@ -73,7 +73,7 @@ session_start();
                 </li>
                 <li>
                     <i class="fal fa-phone-alt"></i>
-                    <p>+92324953752</p>
+                    <p>+01845041234</p>
                 </li>
                 <li>
                     <i class="fal fa-clock"></i>
@@ -96,7 +96,7 @@ session_start();
                 <img src="img/people/a.jpeg" alt="" />
                 <p>
                     <span>Ed</span> Founder and CEO <br />
-                    Phone: +03120100830 <br />
+                    Phone: +01850452345 <br />
                     Email:Ed@gmail.com
                 </p>
             </div>
@@ -104,7 +104,7 @@ session_start();
                 <img src="img/people/b.jpeg" alt="" />
                 <p>
                     <span>Edd</span> Executive Marketing Manager <br />
-                    Phone: +03000101230 <br />
+                    Phone: +01778864563 <br />
                     Email:Edd@gmail.com
                 </p>
             </div>
@@ -112,7 +112,7 @@ session_start();
                 <img src="img/people/c.jpeg" alt="" />
                 <p>
                     <span>Eddy</span> Customer Service Officer <br />
-                    Phone: +03400190835 <br />
+                    Phone: +01971451499 <br />
                     Email:Eddy@gmail.com
                 </p>
             </div>
@@ -121,14 +121,15 @@ session_start();
 
     <footer class="section-p1">
         <div class="col">
-            <img class="logo" src="img/logo.png" />
-            <h4>Contact</h4>
+        <img src="img/logo.png" class="logo" alt="". width="150", height="140" />
+
+        <h4>Contact</h4>
             <p>
-                <strong>Address: </strong> Street 2, Johar Town Block A,Lahore
+                <strong>Address: </strong> Kha 224, Bir Uttam Rafiqul Islam Ave, Dhaka 1212
 
             </p>
             <p>
-                <strong>Phone: </strong> +92324953752
+                <strong>Phone: </strong> +8801718175150
             </p>
             <p>
                 <strong>Hours: </strong> 9am-5pm
@@ -145,7 +146,7 @@ session_start();
             <img src="img/pay/pay.png" />
         </div>
         <div class="copyright">
-            <p>2021. byteBazaar. HTML CSS </p>
+            <p>2025. Techie Tokkor</p>
         </div>
     </footer>
 

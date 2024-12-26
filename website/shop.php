@@ -10,7 +10,7 @@ session_start();
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ByteBazaar</title>
+    <title>Teachie Tokkor</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 
@@ -55,8 +55,8 @@ session_start();
 
 <body>
     <section id="header">
-        <a href="index.php"><img src="img/logo.png" class="logo" alt="" /></a>
-
+        <!-- <a href="index.php"><img src="img/logo.png" class="logo" alt="" /></a> -->
+        <a href="index.php"><img src="img/logo.png" class="logo" alt="" width="164" height="150"/></a>
         <div>
             <ul id="navbar">
                 <li><a href="index.php">Home</a></li>
@@ -91,7 +91,7 @@ session_start();
     <section id="page-header">
         <h2>Premium Gaming</h2>
 
-        <p>Save more with coupons & up to 70% off!</p>
+        <!-- <p>Save more with coupons & up to 70% off!</p> -->
     </section>
 
     <div class="search-container">
@@ -272,14 +272,14 @@ session_start();
 
     <footer class="section-p1">
         <div class="col">
-            <img class="logo" src="img/logo.png" />
+        <img src="img/logo.png" class="logo" alt="" width="164" height="150" />
             <h4>Contact</h4>
             <p>
-                <strong>Address: </strong> Street 2, Johar Town Block A,Lahore
+                <strong>Address: </strong> Kha 224, Bir Uttam Rafiqul Islam Ave, Dhaka 1212
 
             </p>
             <p>
-                <strong>Phone: </strong> +92324953752
+                <strong>Phone: </strong> +01718175150
             </p>
             <p>
                 <strong>Hours: </strong> 9am-5pm
@@ -296,7 +296,7 @@ session_start();
             <img src="img/pay/pay.png" />
         </div>
         <div class="copyright">
-            <p>2021. byteBazaar. HTML CSS </p>
+            <p>2025. Techie Tokkor </p>
         </div>
     </footer>
 
