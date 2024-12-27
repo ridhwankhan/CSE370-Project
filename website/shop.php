@@ -1,62 +1,47 @@
 <?php
 session_start();
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Teachie Tokkor</title>
+    <title>Techie Tokkor</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-
     <link rel="stylesheet" href="style.css" />
 
     <style>
-    .search-container {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        background: #e3e6f3;
-        padding: 10px;
-    }
+        .search-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            background: #e3e6f3;
+            padding: 10px;
+        }
 
-    #category-filter {
-        padding: 6px;
-        margin-right: 10px;
-        border: none;
-        border-radius: 4px;
-    }
+        #category-filter, #search {
+            padding: 6px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 4px;
+        }
 
-    #search {
-        padding: 6px;
-        margin-right: 10px;
-        border: none;
-        border-radius: 4px;
-    }
-
-    #search-btn {
-        outline: none;
-        border: none;
-        padding: 10px 30px;
-        background-color: navy;
-        color: white;
-        border-radius: 1rem;
-        cursor: pointer;
-    }
+        #search-btn {
+            outline: none;
+            border: none;
+            padding: 10px 30px;
+            background-color: navy;
+            color: white;
+            border-radius: 1rem;
+            cursor: pointer;
+        }
     </style>
-
- 
 </head>
-
 <body>
     <section id="header">
-        <!-- <a href="index.php"><img src="img/logo.png" class="logo" alt="" /></a> -->
-        <a href="index.php"><img src="img/logo.png" class="logo" alt="" width="164" height="150"/></a>
+        <a href="index.php"><img src="img/logo.png" class="logo" alt="Logo" width="164" height="150" /></a>
         <div>
             <ul id="navbar">
                 <li><a href="index.php">Home</a></li>
@@ -65,20 +50,15 @@ session_start();
                 <li><a href="contact.php">Contact</a></li>
 
                 <?php
-
-                if ($_SESSION['aid'] < 0) {
-                    echo "   <li><a href='login.php'>login</a></li>
-            <li><a href='signup.php'>SignUp</a></li>
-            ";
+                if (isset($_SESSION['aid']) && $_SESSION['aid'] >= 0) {
+                    echo "<li><a href='profile.php'>Profile</a></li>";
                 } else {
-                    echo "   <li><a href='profile.php'>profile</a></li>
-          ";
+                    echo "<li><a href='login.php'>Login</a></li>
+                          <li><a href='signup.php'>SignUp</a></li>";
                 }
                 ?>
                 <li><a href="admin.php">Admin</a></li>
-                <li id="lg-bag">
-                    <a href="cart.php"><i class="far fa-shopping-bag"></i></a>
-                </li>
+                <li id="lg-bag"><a href="cart.php"><i class="far fa-shopping-bag"></i></a></li>
                 <a href="#" id="close"><i class="far fa-times"></i></a>
             </ul>
         </div>
@@ -90,8 +70,6 @@ session_start();
 
     <section id="page-header">
         <h2>Premium Gaming</h2>
-
-        <!-- <p>Save more with coupons & up to 70% off!</p> -->
     </section>
 
     <div class="search-container">
@@ -114,176 +92,76 @@ session_start();
 
     <?php
     include("include/connect.php");
+
+    // Base query
+    $query = "SELECT * FROM products";
+
+    // Handle search and category filtering
     if (isset($_POST['search1'])) {
-        $search = $_POST['search'];
-        $category = $_POST['cat'];
-        $query = "";
-        if (!empty($search))
-            $query = "select* from `products` where ((pname like '%$search%') or (brand like '%$search%') or (description like '%$search%'))";
-        else
-            $query = "select * from `products`";
+        $search = mysqli_real_escape_string($con, $_POST['search']);
+        $category = mysqli_real_escape_string($con, $_POST['cat']);
 
-        if ($category != "all") {
-            if (empty($search)) {
-                $query = $query . "where category = '$category'";
-            } else {
-                $query = $query . "and category = '$category'";
-            }
+        $conditions = [];
+        if (!empty($search)) {
+            $conditions[] = "(pname LIKE '%$search%' OR brand LIKE '%$search%' OR description LIKE '%$search%')";
+        }
+        if ($category !== "all") {
+            $conditions[] = "category = '$category'";
         }
 
-        $result = mysqli_query($con, $query);
-
-        if ($result) {
-            echo "<section id='product1' class='section-p1'>
-                    <div class='pro-container'>";
-
-
+        if (!empty($conditions)) {
+            $query .= " WHERE " . implode(" AND ", $conditions);
         }
-
-        while ($row = mysqli_fetch_assoc($result)) {
-            $pid = $row['pid'];
-            $pname = $row['pname'];
-            if (strlen($pname) > 35) {
-                $pname = substr($pname, 0, 35) . '...';
-            }
-            $desc = $row['description'];
-            $qty = $row['qtyavail'];
-            $price = $row['price'];
-            $cat = $row['category'];
-            $img = $row['img'];
-            $brand = $row['brand'];
-
-           
-                    $query2 = "SELECT pid, AVG(rating) AS average_rating FROM reviews where pid = $pid GROUP BY pid ";
-
-            $result2 = mysqli_query($con, $query2);
-
-            $row2 = mysqli_fetch_assoc($result2);
-
-            if ($row2) {
-                $stars = $row2['average_rating'];
-            } else {
-                $stars = 0;
-            }
-            $stars = round($stars, 0);
-            $empty = 5 - $stars;
-
-            echo "
-                    <div class='pro' onclick='topage($pid)'>
-                      <img src='product_images/$img' height='235px' width = '235px' alt='' />
-                      <div class='des'>
-                        <span>$brand</span>
-                        <h5>$pname</h5>
-                        <div class='star'>";
-            for ($i = 1; $i <= $stars; $i++) {
-                echo "<i class='fas fa-star'></i>";
-
-            }
-            for ($i = 1; $i <= $empty; $i++) {
-                echo "<i class='far fa-star'></i>";
-
-            }
-            echo "</div>
-                        <h4>$$price</h4>
-                      </div>
-                      <a onclick='topage($pid)'><i class='fal fa-shopping-cart cart'></i></a>
-                    </div>
-                 ";
-        }
-
-        if ($result) {
-
-            echo "</section>
-                    </div>";
-        }
-    } else {
-        include("include/connect.php");
-
-        $select = "Select* from products where qtyavail > 0 order by rand()";
-        $result = mysqli_query($con, $select);
-
-        if ($result) {
-            echo "<section id='product1' class='section-p1'>
-                    <div class='pro-container'>";
-
-
-        }
-
-        while ($row = mysqli_fetch_assoc($result)) {
-            $pid = $row['pid'];
-            $pname = $row['pname'];
-            if (strlen($pname) > 35) {
-                $pname = substr($pname, 0, 35) . '...';
-            }
-            $desc = $row['description'];
-            $qty = $row['qtyavail'];
-            $price = $row['price'];
-            $cat = $row['category'];
-            $img = $row['img'];
-            $brand = $row['brand'];
-
-            $query2 = "SELECT pid, AVG(rating) AS average_rating FROM reviews where pid = $pid GROUP BY pid ";
-
-            $result2 = mysqli_query($con, $query2);
-
-            $row2 = mysqli_fetch_assoc($result2);
-
-            if ($row2) {
-                $stars = $row2['average_rating'];
-            } else {
-                $stars = 0;
-            }
-            $stars = round($stars, 0);
-
-            $empty = 5 - $stars;
-
-            echo "
-                    <div class='pro' onclick='topage($pid)'>
-                      <img src='product_images/$img' height='235px' width = '235px' alt='' />
-                      <div class='des'>
-                        <span>$brand</span>
-                        <h5>$pname</h5>
-                        <div class='star'>";
-            for ($i = 1; $i <= $stars; $i++) {
-                echo "<i class='fas fa-star'></i>";
-
-            }
-            for ($i = 1; $i <= $empty; $i++) {
-                echo "<i class='far fa-star'></i>";
-
-            }
-            echo "</div>
-                        <h4>$$price</h4>
-                      </div>
-                      <a onclick='topage($pid)'><i class='fal fa-shopping-cart cart'></i></a>
-                    </div>
-                 ";
-        }
-
-        if ($result) {
-
-            echo "</section>
-                    </div>";
-        }
-
     }
-    ?>
 
+    $query .= " ORDER BY pid DESC"; // Sort by most recent products
+    $result = mysqli_query($con, $query);
+
+    if (!$result) {
+        die("Error executing query: " . mysqli_error($con));
+    }
+
+    echo "<section id='product1' class='section-p1'>
+            <div class='pro-container'>";
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $pid = $row['pid'];
+        $pname = strlen($row['pname']) > 35 ? substr($row['pname'], 0, 35) . "..." : $row['pname'];
+        $price = $row['price'];
+        $img = $row['img'];
+        $brand = $row['brand'];
+
+        // Resolve image path and handle missing images
+        $imagePath = file_exists($img) ? $img : 'img/default.png';
+
+        echo "<div class='pro' onclick='topage($pid)'>
+                <img src='$imagePath' height='235px' width='235px' alt='Product Image' />
+                <div class='des'>
+                    <span>$brand</span>
+                    <h5>$pname</h5>
+                    <div class='star'>";
+        
+        // Display placeholder stars for now
+        echo "<i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='far fa-star'></i>";
+
+        echo "</div>
+                    <h4>$$price</h4>
+                </div>
+                <a onclick='topage($pid)'><i class='fal fa-shopping-cart cart'></i></a>
+              </div>";
+    }
+
+    echo "</div>
+        </section>";
+    ?>
 
     <footer class="section-p1">
         <div class="col">
-        <img src="img/logo.png" class="logo" alt="" width="164" height="150" />
+            <img src="img/logo.png" class="logo" alt="Logo" width="164" height="150" />
             <h4>Contact</h4>
-            <p>
-                <strong>Address: </strong> Kha 224, Bir Uttam Rafiqul Islam Ave, Dhaka 1212
-
-            </p>
-            <p>
-                <strong>Phone: </strong> +01718175150
-            </p>
-            <p>
-                <strong>Hours: </strong> 9am-5pm
-            </p>
+            <p><strong>Address:</strong> Kha 224, Bir Uttam Rafiqul Islam Ave, Dhaka 1212</p>
+            <p><strong>Phone:</strong> +01718175150</p>
+            <p><strong>Hours:</strong> 9am-5pm</p>
         </div>
 
         <div class="col">
@@ -296,25 +174,14 @@ session_start();
             <img src="img/pay/pay.png" />
         </div>
         <div class="copyright">
-            <p>2025. Techie Tokkor </p>
+            <p>© 2025. Techie Tokkor</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
-</body>
-
-</html>
-
-<script>
-    function topage(pid) {
-        window.location.href = `sproduct.php?pid=${pid}`;
-    }
-    </script>
     <script>
-    window.addEventListener("unload", function() {
-        // Call a PHP script to log out the user
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "logout.php", false);
-        xhr.send();
-    });
+        function topage(pid) {
+            window.location.href = `sproduct.php?pid=${pid}`;
+        }
     </script>
+</body>
+</html>
