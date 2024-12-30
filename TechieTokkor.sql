@@ -131,7 +131,7 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`pid`, `pname`, `category`, `description`, `price`, `qtyavail`, `img`, `brand`) VALUES
+INSERT INTO `products` (`pid`, `pname`, `category`, `description`, `price`, `qtyavail`, `img` FROM products, `brand`) VALUES
 (27, 'Core i5 3570', 'cpu', 'Attention all tech enthusiasts! Upgrade your computer performance with the powerful i5 3570 processor! Built on Intel Ivy Bridge architecture, this quad-core processor boasts a base clock speed of 3.4', 250, 10, 'x14.jpeg', 'Intel'),
 (30, 'Razer BlackWidow V4 Pro', 'keyboard', ' Take your gaming experience to the next level with the Razer BlackWidow V4 Pro! This mechanical gaming keyboard features Razer signature green switches, providing tactile feedback and optimized actua', 370, 15, 'x3.jpeg', 'Razor'),
 (31, 'Hp Gaming Mouse M160', 'mouse', ' Dominate your opponents with the HP Gaming Mouse M160! This high-performance mouse features six programmable buttons and a high-precision optical sensor, allowing for quick and accurate movements in ', 130, 19, 'x5.jpeg', 'Hp'),
