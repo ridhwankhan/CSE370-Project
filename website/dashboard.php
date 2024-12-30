@@ -25,41 +25,74 @@ if (!isset($_SESSION['admin_logged_in'])) {
         }
 
         header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px;
-            text-align: center;
+        background-color: #4CAF50;
+        color: white;
+        padding: 20px 0; /* Decrease padding to reduce banner height */
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 150px; /* Set a fixed height */
         }
 
-        nav {
-            margin-top: 10px;
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        nav a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: white;
+        .logo {
+            width: 150px;
+            height: auto;
+            margin-left: 35px;
+            margin-top: 15px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
             font-weight: bold;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 8px 16px;
-            border-radius: 4px;
         }
 
-        nav a:hover {
-            background-color: white;
-            color: #4CAF50;
-        }
+        header nav {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    margin-right: 35px; /* Add spacing on the right */
+    gap: 20px; /* Space between buttons */
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+nav a:hover {
+    background-color: white;
+    color: #4CAF50;
+}
+
 
         main {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        margin-top: 250px; /* Adjust to match the reduced height of the header */
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
-        h1, h2 {
+        h2 {
             color: #444;
             margin-bottom: 20px;
         }
@@ -75,7 +108,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
         }
 
         th, td {
-            padding: 10px;
+            padding: 20px;
             text-align: center;
         }
 
@@ -121,14 +154,17 @@ if (!isset($_SESSION['admin_logged_in'])) {
 </head>
 <body>
     <header>
-        <h1>Welcome to the Admin Dashboard</h1>
+        <div class="header-container">
+            <a href="index.php"><img src="img/logo.png" alt="Techie Tokkor Logo" class="logo"></a>
+            <h1>Welcome to the Admin Dashboard</h1>
+        </div>
         <nav>
             <a href="inventory_management.php">Manage Products</a>
             <a href="order_management.php">View Orders</a>
             <a href="logout.php">Logout</a>
         </nav>
     </header>
-    
+
     <main>
         <section>
             <h2>Overview</h2>
@@ -144,7 +180,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
                 <p>Total Users: <?php echo $user_count; ?></p>
             </div>
         </section>
-        
+
         <section>
             <h2>Recent Orders</h2>
             <table>
@@ -169,10 +205,9 @@ if (!isset($_SESSION['admin_logged_in'])) {
         </section>
 
         <section>
-            <h2 align = 'center'>Quick Actions</h2>
-            <div align = 'center'>
+            <h2 align="center">Quick Actions</h2>
+            <div align="center">
                 <a href="add_product.php">Add New Product</a>
-                
                 <a href="order_management.php">Manage Orders</a>
             </div>
         </section>
