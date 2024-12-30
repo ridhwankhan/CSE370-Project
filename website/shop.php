@@ -93,10 +93,15 @@ session_start();
     <?php
     include("include/connect.php");
 
+<<<<<<< HEAD
     // Base query
     $query = "SELECT * FROM products";
 
     // Handle search and category filtering
+=======
+    $query = "SELECT * FROM products";
+
+>>>>>>> master
     if (isset($_POST['search1'])) {
         $search = mysqli_real_escape_string($con, $_POST['search']);
         $category = mysqli_real_escape_string($con, $_POST['cat']);
@@ -114,7 +119,11 @@ session_start();
         }
     }
 
+<<<<<<< HEAD
     $query .= " ORDER BY pid DESC"; // Sort by most recent products
+=======
+    $query .= " ORDER BY pid DESC";
+>>>>>>> master
     $result = mysqli_query($con, $query);
 
     if (!$result) {
@@ -122,6 +131,7 @@ session_start();
     }
 
     echo "<section id='product1' class='section-p1'>
+<<<<<<< HEAD
             <div class='pro-container'>";
 
     while ($row = mysqli_fetch_assoc($result)) {
@@ -153,6 +163,63 @@ session_start();
 
     echo "</div>
         </section>";
+=======
+        <div class='pro-container'>";
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $pid = $row['pid'];
+            $pname = $row['pname'];
+            if (strlen($pname) > 35) {
+                $pname = substr($pname, 0, 35) . '...';
+            }
+            $desc = $row['description'];
+            $qty = $row['qtyavail'];
+            $price = $row['price'];
+            $cat = $row['category'];
+            $img = $row['img'];
+            $brand = $row['brand'];
+
+           
+                    $query2 = "SELECT pid, AVG(rating) AS average_rating FROM reviews where pid = $pid GROUP BY pid ";
+
+            $result2 = mysqli_query($con, $query2);
+
+            $row2 = mysqli_fetch_assoc($result2);
+
+            if ($row2) {
+                $stars = $row2['average_rating'];
+            } else {
+                $stars = 0;
+            }
+            $stars = round($stars, 0);
+            $empty = 5 - $stars;
+
+            echo "
+                    <div class='pro' onclick='topage($pid)'>
+                      <img src='product_images/$img' height='235px' width = '235px' alt='' />
+                      <div class='des'>
+                        <span>$brand</span>
+                        <h5>$pname</h5>
+                        <div class='star'>";
+            for ($i = 1; $i <= $stars; $i++) {
+                echo "<i class='fas fa-star'></i>";
+
+            }
+            for ($i = 1; $i <= $empty; $i++) {
+                echo "<i class='far fa-star'></i>";
+
+            }
+            echo "</div>
+                        <h4>$$price</h4>
+                      </div>
+                      <a onclick='topage($pid)'><i class='fal fa-shopping-cart cart'></i></a>
+                    </div>
+                 ";
+}
+
+echo "</div>
+    </section>";
+>>>>>>> master
     ?>
 
     <footer class="section-p1">

@@ -15,7 +15,113 @@ if (!isset($_SESSION['admin_logged_in'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="style.css"> <!-- Add your CSS -->
+=======
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f5f7;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            background-color: white;
+            color: #4CAF50;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background: #f4f4f4;
+            color: #666;
+        }
+
+        div {
+            margin-bottom: 20px;
+        }
+
+        div a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+            border: 1px solid #4CAF50;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        div a:hover {
+            background: #4CAF50;
+            color: white;
+        }
+    </style>
+>>>>>>> master
 </head>
 <body>
     <header>
@@ -45,7 +151,11 @@ if (!isset($_SESSION['admin_logged_in'])) {
         
         <section>
             <h2>Recent Orders</h2>
+<<<<<<< HEAD
             <table border="1">
+=======
+            <table>
+>>>>>>> master
                 <tr>
                     <th>Order ID</th>
                     <th>Date</th>
@@ -67,10 +177,17 @@ if (!isset($_SESSION['admin_logged_in'])) {
         </section>
 
         <section>
+<<<<<<< HEAD
             <h2>Quick Actions</h2>
             <div>
                 <a href="add_product.php">Add New Product</a>
                 <a href="inventory_management.php">Manage Products</a>
+=======
+            <h2 align = 'center'>Quick Actions</h2>
+            <div align = 'center'>
+                <a href="add_product.php">Add New Product</a>
+                
+>>>>>>> master
                 <a href="order_management.php">Manage Orders</a>
             </div>
         </section>

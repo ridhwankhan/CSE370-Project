@@ -46,8 +46,92 @@ $user = mysqli_fetch_assoc($user_result);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>View Order Details</title>
     <link rel="stylesheet" href="style.css"> <!-- Add your CSS -->
+=======
+    <title>Order Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f5f7;
+            color: #333;
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;
+            background: #4CAF50;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            padding: 10px;
+            background: #f4f4f4;
+            color: #666;
+        }
+    </style>
+>>>>>>> master
 </head>
 <body>
     <header>
@@ -58,7 +142,11 @@ $user = mysqli_fetch_assoc($user_result);
     <main>
         <section>
             <h2>Customer Information</h2>
+<<<<<<< HEAD
             <p><strong>Name:</strong> <?php echo $user['afname'] . ' ' . $user['alname']; ?></p>
+=======
+            <p><strong>Name:</strong> <?php echo "{$user['afname']} {$user['alname']}"; ?></p>
+>>>>>>> master
             <p><strong>Email:</strong> <?php echo $user['email']; ?></p>
             <p><strong>Phone:</strong> <?php echo $user['phone']; ?></p>
             <p><strong>Address:</strong> <?php echo $order['address']; ?></p>
@@ -69,12 +157,17 @@ $user = mysqli_fetch_assoc($user_result);
         <section>
             <h2>Order Information</h2>
             <p><strong>Order Date:</strong> <?php echo $order['dateod']; ?></p>
+<<<<<<< HEAD
             <p><strong>Delivery Date:</strong> <?php echo $order['datedel'] ? $order['datedel'] : 'Not delivered yet'; ?></p>
+=======
+            <p><strong>Delivery Date:</strong> <?php echo $order['datedel']; ?></p>
+>>>>>>> master
             <p><strong>Total Amount:</strong> $<?php echo $order['total']; ?></p>
         </section>
 
         <section>
             <h2>Products in Order</h2>
+<<<<<<< HEAD
             <table border="1">
                 <tr>
                     <th>Product ID</th>
@@ -95,6 +188,32 @@ $user = mysqli_fetch_assoc($user_result);
                     </tr>";
                 }
                 ?>
+=======
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    while ($product = mysqli_fetch_assoc($order_products_result)) {
+                        $subtotal = $product['qty'] * $product['price'];
+                        echo "<tr>
+                            <td>{$product['pid']}</td>
+                            <td>{$product['pname']}</td>
+                            <td>{$product['qty']}</td>
+                            <td>\${$product['price']}</td>
+                            <td>\${$subtotal}</td>
+                        </tr>";
+                    }
+                    ?>
+                </tbody>
+>>>>>>> master
             </table>
         </section>
     </main>
