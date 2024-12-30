@@ -46,10 +46,6 @@ $user = mysqli_fetch_assoc($user_result);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>View Order Details</title>
-    <link rel="stylesheet" href="style.css"> <!-- Add your CSS -->
-=======
     <title>Order Details</title>
     <style>
         body {
@@ -131,7 +127,6 @@ $user = mysqli_fetch_assoc($user_result);
             color: #666;
         }
     </style>
->>>>>>> master
 </head>
 <body>
     <header>
@@ -142,11 +137,7 @@ $user = mysqli_fetch_assoc($user_result);
     <main>
         <section>
             <h2>Customer Information</h2>
-<<<<<<< HEAD
-            <p><strong>Name:</strong> <?php echo $user['afname'] . ' ' . $user['alname']; ?></p>
-=======
             <p><strong>Name:</strong> <?php echo "{$user['afname']} {$user['alname']}"; ?></p>
->>>>>>> master
             <p><strong>Email:</strong> <?php echo $user['email']; ?></p>
             <p><strong>Phone:</strong> <?php echo $user['phone']; ?></p>
             <p><strong>Address:</strong> <?php echo $order['address']; ?></p>
@@ -157,38 +148,12 @@ $user = mysqli_fetch_assoc($user_result);
         <section>
             <h2>Order Information</h2>
             <p><strong>Order Date:</strong> <?php echo $order['dateod']; ?></p>
-<<<<<<< HEAD
-            <p><strong>Delivery Date:</strong> <?php echo $order['datedel'] ? $order['datedel'] : 'Not delivered yet'; ?></p>
-=======
             <p><strong>Delivery Date:</strong> <?php echo $order['datedel']; ?></p>
->>>>>>> master
             <p><strong>Total Amount:</strong> $<?php echo $order['total']; ?></p>
         </section>
 
         <section>
             <h2>Products in Order</h2>
-<<<<<<< HEAD
-            <table border="1">
-                <tr>
-                    <th>Product ID</th>
-                    <th>Product Name</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Subtotal</th>
-                </tr>
-                <?php
-                while ($product = mysqli_fetch_assoc($order_products_result)) {
-                    $subtotal = $product['qty'] * $product['price'];
-                    echo "<tr>
-                        <td>{$product['pid']}</td>
-                        <td>{$product['pname']}</td>
-                        <td>{$product['qty']}</td>
-                        <td>{$product['price']}</td>
-                        <td>$subtotal</td>
-                    </tr>";
-                }
-                ?>
-=======
             <table>
                 <thead>
                     <tr>
@@ -213,7 +178,6 @@ $user = mysqli_fetch_assoc($user_result);
                     }
                     ?>
                 </tbody>
->>>>>>> master
             </table>
         </section>
     </main>

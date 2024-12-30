@@ -93,15 +93,8 @@ session_start();
     <?php
     include("include/connect.php");
 
-<<<<<<< HEAD
-    // Base query
     $query = "SELECT * FROM products";
 
-    // Handle search and category filtering
-=======
-    $query = "SELECT * FROM products";
-
->>>>>>> master
     if (isset($_POST['search1'])) {
         $search = mysqli_real_escape_string($con, $_POST['search']);
         $category = mysqli_real_escape_string($con, $_POST['cat']);
@@ -119,11 +112,7 @@ session_start();
         }
     }
 
-<<<<<<< HEAD
-    $query .= " ORDER BY pid DESC"; // Sort by most recent products
-=======
     $query .= " ORDER BY pid DESC";
->>>>>>> master
     $result = mysqli_query($con, $query);
 
     if (!$result) {
@@ -131,39 +120,6 @@ session_start();
     }
 
     echo "<section id='product1' class='section-p1'>
-<<<<<<< HEAD
-            <div class='pro-container'>";
-
-    while ($row = mysqli_fetch_assoc($result)) {
-        $pid = $row['pid'];
-        $pname = strlen($row['pname']) > 35 ? substr($row['pname'], 0, 35) . "..." : $row['pname'];
-        $price = $row['price'];
-        $img = $row['img'];
-        $brand = $row['brand'];
-
-        // Resolve image path and handle missing images
-        $imagePath = file_exists($img) ? $img : 'img/default.png';
-
-        echo "<div class='pro' onclick='topage($pid)'>
-                <img src='$imagePath' height='235px' width='235px' alt='Product Image' />
-                <div class='des'>
-                    <span>$brand</span>
-                    <h5>$pname</h5>
-                    <div class='star'>";
-        
-        // Display placeholder stars for now
-        echo "<i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='far fa-star'></i>";
-
-        echo "</div>
-                    <h4>$$price</h4>
-                </div>
-                <a onclick='topage($pid)'><i class='fal fa-shopping-cart cart'></i></a>
-              </div>";
-    }
-
-    echo "</div>
-        </section>";
-=======
         <div class='pro-container'>";
 
         while ($row = mysqli_fetch_assoc($result)) {
@@ -219,7 +175,6 @@ session_start();
 
 echo "</div>
     </section>";
->>>>>>> master
     ?>
 
     <footer class="section-p1">

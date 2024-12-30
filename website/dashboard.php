@@ -15,9 +15,6 @@ if (!isset($_SESSION['admin_logged_in'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-<<<<<<< HEAD
-    <link rel="stylesheet" href="style.css"> <!-- Add your CSS -->
-=======
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -121,7 +118,6 @@ if (!isset($_SESSION['admin_logged_in'])) {
             color: white;
         }
     </style>
->>>>>>> master
 </head>
 <body>
     <header>
@@ -151,11 +147,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
         
         <section>
             <h2>Recent Orders</h2>
-<<<<<<< HEAD
-            <table border="1">
-=======
             <table>
->>>>>>> master
                 <tr>
                     <th>Order ID</th>
                     <th>Date</th>
@@ -177,17 +169,10 @@ if (!isset($_SESSION['admin_logged_in'])) {
         </section>
 
         <section>
-<<<<<<< HEAD
-            <h2>Quick Actions</h2>
-            <div>
-                <a href="add_product.php">Add New Product</a>
-                <a href="inventory_management.php">Manage Products</a>
-=======
             <h2 align = 'center'>Quick Actions</h2>
             <div align = 'center'>
                 <a href="add_product.php">Add New Product</a>
                 
->>>>>>> master
                 <a href="order_management.php">Manage Orders</a>
             </div>
         </section>
