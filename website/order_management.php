@@ -13,7 +13,7 @@ if (isset($_GET['delete_id'])) {
     $delete_id = intval($_GET['delete_id']);
     $delete_order_query = "DELETE FROM orders WHERE oid = $delete_id";
     $delete_order_details_query = "DELETE FROM `order-details` WHERE oid = $delete_id";
-    
+
     if (mysqli_query($con, $delete_order_details_query) && mysqli_query($con, $delete_order_query)) {
         // Redirect back to the order management page after successful deletion
         header("Location: order_management.php");
@@ -113,6 +113,8 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, 
             font-size: 14px;
             text-decoration: none;
             border-radius: 4px;
+            display: inline-block;
+            margin: 0 5px;
         }
 
         .btn-view {
@@ -131,6 +133,12 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, 
 
         .btn-delete:hover {
             background-color: #d32f2f;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
         }
 
         .admin-btn {
@@ -174,10 +182,11 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, 
                 <?php
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
+                        $delivery_date = $row['datedel'] ?: 'Pending';
                         echo "<tr>
                             <td>{$row['oid']}</td>
                             <td>{$row['dateod']}</td>
-                            <td>" . ($row['datedel'] ?: 'Pending') . "</td>
+                            <td>{$delivery_date}</td>
                             <td>{$row['aid']}</td>
                             <td>{$row['address']}</td>
                             <td>\${$row['total']}</td>
@@ -194,8 +203,10 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, 
                                 </form>
                             </td>
                             <td>
-                                <a href='view_order.php?id={$row['oid']}' class='btn btn-view'>View</a>
-                                <a href='order_management.php?delete_id={$row['oid']}' class='btn btn-delete' onclick='return confirm(\'Are you sure you want to delete this order?\')'>Delete</a>
+                                <div class='action-buttons'>
+                                    <a href='view_order.php?id={$row['oid']}' class='btn btn-view'>View</a>
+                                      <a href='order_management.php?delete_id={$row['oid']}' class='btn btn-delete' onclick='return confirm(\"Are you sure you want to delete this order?\")'>Delete</a>
+                                </div>
                             </td>
                         </tr>";
                     }

@@ -111,8 +111,10 @@ if (isset($_POST['check'])) {
     </section>
 
     <section id="page-header" class="about-header">
+        <h2>#GameTillTheEnd</h2>
         <!-- <h2</h2> -->
 
+        <p>Providing premium gaming experience</p>
         <p>Providing premium Electronics experience</p>
     </section>
 
@@ -154,7 +156,6 @@ if (isset($_POST['check'])) {
                     $cqty = $row['cqty'];
                     $a = $price * $cqty;
                     echo "
-
             <tr>
               <td>
                 <a href='cart.php?re=$pid'><i class='far fa-times-circle'></i></a>
@@ -218,7 +219,6 @@ if (isset($_POST['check'])) {
                     $cqty = $row['cqty'];
                     $a = $price * $cqty;
                     echo "
-
               <input style='display: none;' name='$pid-p' class='inp' type = 'number' value = '$pid'/>
               <input style='display: none;' name='$pid-qt' class='inq' type = 'number' value = '$cqty'/>
               ";
@@ -302,4 +302,3 @@ window.addEventListener("unload", function() {
   xhr.open("GET", "logout.php", false);
   xhr.send();
 });
-</script>

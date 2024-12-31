@@ -21,6 +21,7 @@ if (isset($_POST['submit'])) {
 
             if (move_uploaded_file($imageTmpName, $imageDestination)) {
                 // Save product information to the database
+                $query = "INSERT INTO products (pname, category, price, img) VALUES ('$pname', '$category', '$price', '$newImageName')";
                 $query = "INSERT INTO products (pname, category, price, qtyavail, img) 
                           VALUES ('$pname', '$category', '$price', '$qtyavail', '$newImageName')";
                 if (mysqli_query($con, $query)) {
