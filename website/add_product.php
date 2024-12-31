@@ -5,6 +5,7 @@ if (isset($_POST['submit'])) {
     $pname = mysqli_real_escape_string($con, $_POST['pname']);
     $category = mysqli_real_escape_string($con, $_POST['category']);
     $price = mysqli_real_escape_string($con, $_POST['price']);
+    $qtyavail = mysqli_real_escape_string($con, $_POST['qtyavail']); // Capture available quantity
 
     // Handle file upload
     if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
@@ -20,7 +21,8 @@ if (isset($_POST['submit'])) {
 
             if (move_uploaded_file($imageTmpName, $imageDestination)) {
                 // Save product information to the database
-                $query = "INSERT INTO products (pname, category, price, img) VALUES ('$pname', '$category', '$price', '$newImageName')";
+                $query = "INSERT INTO products (pname, category, price, qtyavail, img) 
+                          VALUES ('$pname', '$category', '$price', '$qtyavail', '$newImageName')";
                 if (mysqli_query($con, $query)) {
                     header("Location: inventory_management.php");
                 } else {
@@ -118,6 +120,10 @@ if (isset($_POST['submit'])) {
             <div>
                 <label for="price">Price:</label>
                 <input type="number" name="price" id="price" required>
+            </div>
+            <div>
+                <label for="qtyavail">Quantity Available:</label>
+                <input type="number" name="qtyavail" id="qtyavail" min="1" required>
             </div>
             <div>
                 <label for="image">Product Image:</label>

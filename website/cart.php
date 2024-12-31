@@ -111,9 +111,9 @@ if (isset($_POST['check'])) {
     </section>
 
     <section id="page-header" class="about-header">
-        <h2>#GameTillTheEnd</h2>
+        <!-- <h2</h2> -->
 
-        <p>Providing premium gaming experience</p>
+        <p>Providing premium Electronics experience</p>
     </section>
 
 

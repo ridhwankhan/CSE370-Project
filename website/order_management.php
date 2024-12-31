@@ -24,7 +24,7 @@ if (isset($_GET['delete_id'])) {
 }
 
 // Fetch all orders
-$result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total FROM orders");
+$result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, status FROM orders");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -132,6 +132,19 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total F
         .btn-delete:hover {
             background-color: #d32f2f;
         }
+
+        .admin-btn {
+            padding: 8px 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .admin-btn:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -153,6 +166,7 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total F
                     <th>Customer ID</th>
                     <th>Address</th>
                     <th>Total</th>
+                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -163,18 +177,30 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total F
                         echo "<tr>
                             <td>{$row['oid']}</td>
                             <td>{$row['dateod']}</td>
-                            <td>{$row['datedel']}</td>
+                            <td>" . ($row['datedel'] ?: 'Pending') . "</td>
                             <td>{$row['aid']}</td>
                             <td>{$row['address']}</td>
                             <td>\${$row['total']}</td>
                             <td>
+                                <form method='post' action='update_order_status.php'>
+                                    <input type='hidden' name='order_id' value='{$row['oid']}'>
+                                    <select name='status'>
+                                        <option value='Pending' " . ($row['status'] == 'Pending' ? 'selected' : '') . ">Pending</option>
+                                        <option value='Processing' " . ($row['status'] == 'Processing' ? 'selected' : '') . ">Processing</option>
+                                        <option value='Shipped' " . ($row['status'] == 'Shipped' ? 'selected' : '') . ">Shipped</option>
+                                        <option value='Delivered' " . ($row['status'] == 'Delivered' ? 'selected' : '') . ">Delivered</option>
+                                    </select>
+                                    <button type='submit' class='admin-btn'>Update</button>
+                                </form>
+                            </td>
+                            <td>
                                 <a href='view_order.php?id={$row['oid']}' class='btn btn-view'>View</a>
-                                <a href='order_management.php?delete_id={$row['oid']}' class='btn btn-delete' onclick='return confirm(\"Are you sure you want to delete this order?\")'>Delete</a>
+                                <a href='order_management.php?delete_id={$row['oid']}' class='btn btn-delete' onclick='return confirm(\'Are you sure you want to delete this order?\')'>Delete</a>
                             </td>
                         </tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='7'>No orders found.</td></tr>";
+                    echo "<tr><td colspan='8'>No orders found.</td></tr>";
                 }
                 ?>
             </tbody>

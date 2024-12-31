@@ -122,10 +122,11 @@ CREATE TABLE `products` (
   `category` varchar(50) NOT NULL,
   `description` varchar(200) NOT NULL,
   `price` int(11) NOT NULL,
-  `qtyavail` int(11) NOT NULL,
+  `qtyavail` int(11) NOT NULL DEFAULT 0, -- Add this line
   `img` varchar(255) NOT NULL,
   `brand` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --
 -- Dumping data for table `products`
@@ -308,3 +309,7 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+ALTER TABLE orders 
+ADD COLUMN status ENUM('Pending', 'Processing', 'Shipped', 'Delivered') NOT NULL DEFAULT 'Pending';
+DESCRIBE orders;
+UPDATE orders SET status = 'Processing' WHERE oid = <order_id>;
