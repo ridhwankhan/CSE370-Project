@@ -52,9 +52,9 @@ session_start();
     </section>
 
     <section id="page-header" class="about-header">
-        <h2>#GameTillTheEnd</h2>
+        <h2>#Electronics</h2>
 
-        <p>Providing Premium Gaming Experience</p>
+        <p>Providing Premium Electronics Products</p>
     </section>
 
     <section id="contact-details" class="section-p1">
@@ -95,25 +95,25 @@ session_start();
             <div>
                 <img src="img/people/a.jpeg" alt="" />
                 <p>
-                    <span>Ed</span> Founder and CEO <br />
+                    <span>Rd</span> Founder and CEO <br />
                     Phone: +01850452345 <br />
-                    Email:Ed@gmail.com
+                    Email:Rd@gmail.com
                 </p>
             </div>
             <div>
                 <img src="img/people/b.jpeg" alt="" />
                 <p>
-                    <span>Edd</span> Executive Marketing Manager <br />
+                    <span>Owr</span> Executive Marketing Manager <br />
                     Phone: +01778864563 <br />
-                    Email:Edd@gmail.com
+                    Email:Owr@gmail.com
                 </p>
             </div>
             <div>
                 <img src="img/people/c.jpeg" alt="" />
                 <p>
-                    <span>Eddy</span> Customer Service Officer <br />
+                    <span>Rdh</span> Customer Service Officer <br />
                     Phone: +01971451499 <br />
-                    Email:Eddy@gmail.com
+                    Email:Rdh@gmail.com
                 </p>
             </div>
         </div>

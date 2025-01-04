@@ -69,7 +69,7 @@ session_start();
     </section>
 
     <section id="page-header">
-        <h2>Premium Gaming</h2>
+        <h2>Premium Electronics Items</h2>
     </section>
 
     <div class="search-container">
