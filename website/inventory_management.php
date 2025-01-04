@@ -20,22 +20,69 @@ $result = mysqli_query($con, "SELECT * FROM products");
         header {
             background-color: #4CAF50;
             color: white;
-            padding: 20px;
-            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            height: 150px;
+            justify-content: space-between;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-left: 20px;
+        }
+
+        .logo {
+            width: 120px;
+            height: auto;
+            margin-left: 35px;
+            margin-top: 15px;
+}
+
+
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: white;
+            color: #4CAF50;
         }
 
         main {
             max-width: 1200px;
-            margin: 30px auto;
+            margin: 200px auto 30px;
             background: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            margin-bottom: 20px;
-            color: #444;
         }
 
         a {
@@ -113,7 +160,16 @@ $result = mysqli_query($con, "SELECT * FROM products");
 </head>
 <body>
     <header>
-        <h1>Product Management</h1>
+        <div class="header-container">
+            <a href="index.php">
+                <img src="img/logo.png" alt="Techie Tokkor Logo" class="logo">
+            </a>
+            <h1>Product Management</h1>
+        </div>
+        <nav>
+            <a href="dashboard.php">Dashboard</a>
+            <a href="logout.php">Logout</a>
+        </nav>
     </header>
     <main>
         <a href="add_product.php">Add New Product</a>
@@ -131,7 +187,7 @@ $result = mysqli_query($con, "SELECT * FROM products");
                 <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
                         <td>
-                        <img src="product_images/<?php echo $row['img']; ?>" alt="<?php echo $row['pname']; ?>">
+                            <img src="product_images/<?php echo $row['img']; ?>" alt="<?php echo $row['pname']; ?>">
                         </td>
                         <td><?php echo $row['pname']; ?></td>
                         <td><?php echo $row['category']; ?></td>

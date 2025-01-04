@@ -64,21 +64,21 @@ if (!isset($_SESSION['admin_logged_in'])) {
     justify-content: flex-end; /* Align items to the right */
     margin-right: 35px; /* Add spacing on the right */
     gap: 20px; /* Space between buttons */
-}
+    }
 
-nav a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 8px 16px;
-    border-radius: 4px;
-}
+    nav a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 8px 16px;
+        border-radius: 4px;
+    }
 
-nav a:hover {
-    background-color: white;
-    color: #4CAF50;
-}
+    nav a:hover {
+        background-color: white;
+        color: #4CAF50;
+     }
 
 
         main {
