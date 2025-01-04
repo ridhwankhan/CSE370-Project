@@ -133,7 +133,7 @@ if (isset($_POST['submit'])) {
             <img class="logo" src="img/logo.png" width="150" height="120" />
             <h4>Contact</h4>
             <p>
-                <strong>Address: </strong> address 
+                <strong>Address: </strong> Kha 224, Bir Uttam Rafiqul Islam Ave, Dhaka 1212
 
             </p>
             <p>
