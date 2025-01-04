@@ -145,14 +145,14 @@ if (empty($_SESSION['aid']))
             <img src="img/logo.png" class="logo" alt="" width="164" height="150" />
             <h4>Contact</h4>
             <p>
-                <strong>Address: </strong> Street 2, Johar Town Block A,Lahore
+                <strong>Address: </strong> Kha 224, Bir Uttam Rafiqul Islam Ave, Dhaka 1212
 
             </p>
             <p>
-                <strong>Phone: </strong> +92324953752
+                <strong>Phone: </strong> 018254728121
             </p>
             <p>
-                <strong>Hours: </strong> 9am-5pm
+                <strong>Hours: </strong> 9-5
             </p>
         </div>
 
