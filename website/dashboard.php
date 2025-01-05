@@ -60,10 +60,10 @@ if (!isset($_SESSION['admin_logged_in'])) {
         }
 
         header nav {
-    display: flex;
-    justify-content: flex-end; /* Align items to the right */
-    margin-right: 35px; /* Add spacing on the right */
-    gap: 20px; /* Space between buttons */
+            display: flex;
+            justify-content: flex-end; /* Align items to the right */
+            margin-right: 35px; /* Add spacing on the right */
+            gap: 20px; /* Space between buttons */
     }
 
     nav a {

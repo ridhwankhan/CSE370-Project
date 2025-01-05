@@ -20,7 +20,7 @@ $result = mysqli_query($con, "SELECT * FROM products");
         header {
             background-color: #4CAF50;
             color: white;
-            padding: 20px 0;
+            padding: 20px 0; /* Decrease padding to reduce banner height */
             position: fixed;
             top: 0;
             left: 0;
@@ -28,25 +28,22 @@ $result = mysqli_query($con, "SELECT * FROM products");
             z-index: 1000;
             display: flex;
             align-items: center;
-            height: 150px;
             justify-content: space-between;
+            height: 150px; /* Set a fixed height */
         }
 
         .header-container {
             display: flex;
             align-items: center;
-            gap: 20px;
-            margin-left: 20px;
+            gap: 10px;
         }
 
         .logo {
-            width: 120px;
+            width: 150px;
             height: auto;
             margin-left: 35px;
-            margin-top: 15px;
-}
-
-
+            margin-top: 10px;
+        }
 
         header h1 {
             margin: 0;
@@ -58,8 +55,8 @@ $result = mysqli_query($con, "SELECT * FROM products");
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            gap: 15px;
-            margin-right: 20px;
+            gap: 20px;
+            margin-right: 35px;
         }
 
         nav a {
@@ -67,8 +64,8 @@ $result = mysqli_query($con, "SELECT * FROM products");
             color: white;
             font-weight: bold;
             background: rgba(255, 255, 255, 0.2);
-            padding: 10px 15px;
-            border-radius: 5px;
+            padding: 8px 16px;
+            border-radius: 4px;
         }
 
         nav a:hover {
@@ -82,7 +79,6 @@ $result = mysqli_query($con, "SELECT * FROM products");
             background: white;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
         a {
@@ -130,7 +126,6 @@ $result = mysqli_query($con, "SELECT * FROM products");
             height: 70px;
             object-fit: cover;
             border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
         .actions a {
