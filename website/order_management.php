@@ -39,7 +39,7 @@ if (isset($_POST['order_id']) && isset($_POST['status'])) {
     $status = $_POST['status'];
 
     // Set delivery date to the current date for specific statuses
-    if ($status === 'Processing' || $status === 'Shipped' || $status === 'Delivered') {
+    if ($status === 'Delivered') {
         date_default_timezone_set('Asia/Dhaka'); // Set the timezone
         $delivery_date = date('Y-m-d');
     } else {
@@ -244,7 +244,13 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, 
                 <?php
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $delivery_date = $row['datedel'] ? $row['datedel'] : 'Pending';
+                        // Determine the delivery date based on the status
+                        if ($row['status'] === 'Pending' || $row['status'] === 'Processing' || $row['status'] === 'Shipped') {
+                            $delivery_date = $row['status']; // Display the status as the delivery date
+                        } else {
+                            $delivery_date = $row['datedel'] ? $row['datedel'] : 'Not Set'; // Display the actual date for Delivered or 'Not Set'
+                        }
+
                         echo "<tr>
                             <td>{$row['oid']}</td>
                             <td>{$row['dateod']}</td>
@@ -268,7 +274,6 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, 
                                 <div class='action-buttons'>
                                     <a href='view_order.php?id={$row['oid']}' class='btn btn-view'>View</a>
                                     <a href='order_management.php?delete_id={$row['oid']}' class='btn btn-delete' onclick='return confirm(\"Are you sure you want to delete this order?\")'>Delete</a>
-                                </div>
                                 </div>
                             </td>
                         </tr>";
