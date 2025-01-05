@@ -57,16 +57,67 @@ $user = mysqli_fetch_assoc($user_result);
         }
 
         header {
-            padding: 20px;
-            text-align: center;
-            background: #4CAF50;
+            background-color: #4CAF50;
             color: white;
-            margin-bottom: 20px;
+            padding: 10px 0; /* Reduced padding */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            height: 122px; /* Reduced height */
+            justify-content: space-between;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-left: 20px;
+        }
+        
+
+        .logo {
+            width: 140px;
+            height: auto;
+            margin-left: 35px;
+            border-radius: 8px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: white;
+            color: #4CAF50;
         }
 
         main {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 200px auto 30px;
             padding: 20px;
             background: white;
             border-radius: 8px;
@@ -109,16 +160,6 @@ $user = mysqli_fetch_assoc($user_result);
             background-color: #f1f1f1;
         }
 
-        a {
-            text-decoration: none;
-            color: #4CAF50;
-            font-weight: bold;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
         footer {
             margin-top: 20px;
             text-align: center;
@@ -130,8 +171,16 @@ $user = mysqli_fetch_assoc($user_result);
 </head>
 <body>
     <header>
-        <h1>Order Details (Order ID: <?php echo $order_id; ?>)</h1>
-        <a href="order_management.php">Back to Orders</a>
+        <div class="header-container">
+            <a href="dashboard.php">
+                <img src="img/logo.png" alt="Techie Tokkor Logo" class="logo">
+            </a>
+            <h1>Order Details (Order ID: <?php echo $order_id; ?>)</h1>
+        </div>
+        <nav>
+            <a href="dashboard.php">Dashboard</a>
+            <a href="logout.php">Logout</a>
+        </nav>
     </header>
 
     <main>

@@ -76,24 +76,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header {
             background-color: #4CAF50;
             color: white;
-            padding: 20px;
-            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            height: 121px;
+            justify-content: space-between;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-left: 20px;
+        }
+
+        .logo {
+            width: 140px;
+            height: auto;
+            margin-left: 35px;
+            border-radius: 8px;;
         }
 
         header h1 {
             margin: 0;
             font-size: 24px;
             font-weight: bold;
+            color: white;
         }
 
         main {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
+        margin-top: 150px; /* Adjusted for more spacing below the header */
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
 
         form {
             display: flex;
@@ -150,7 +175,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
 <header>
-    <h1>Edit Product</h1>
+    <div class="header-container">
+        <a href="dashboard.php"><img src="img/logo.png" alt="Techie Tokkor Logo" class="logo"></a>
+        <h1>Edit Product</h1>
+    </div>
 </header>
 <main>
     <form action="" method="POST" enctype="multipart/form-data">
@@ -179,7 +207,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </form>
 </main>
 <footer>
-    <p>© 2025 Techie Tokkor. </p>
+    <p>© 2025 Techie Tokkor.</p>
 </footer>
 </body>
 </html>

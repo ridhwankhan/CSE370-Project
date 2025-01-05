@@ -21,7 +21,6 @@ if (isset($_POST['submit'])) {
 
             if (move_uploaded_file($imageTmpName, $imageDestination)) {
                 // Save product information to the database
-                $query = "INSERT INTO products (pname, category, price, img) VALUES ('$pname', '$category', '$price', '$newImageName')";
                 $query = "INSERT INTO products (pname, category, price, qtyavail, img) 
                           VALUES ('$pname', '$category', '$price', '$qtyavail', '$newImageName')";
                 if (mysqli_query($con, $query)) {
@@ -54,34 +53,70 @@ if (isset($_POST['submit'])) {
             background-color: #f4f5f7;
             color: #333;
         }
+
         header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px;
-            text-align: center;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 0; /* Adjust padding */
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        height: 122px; /* Adjust height */
+        justify-content: space-between;
+    }
+
+
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-left: 20px;
         }
+
+        .logo {
+            width: 140px;
+            height: auto;
+            margin-left: 35px;
+            border-radius: 8px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
         main {
             max-width: 600px;
-            margin: 30px auto;
+            margin: 200px auto 30px;
             background: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
         h1 {
             text-align: center;
             margin-bottom: 20px;
             color: #444;
         }
+
         form {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
+
         label {
             font-weight: bold;
             margin-bottom: 5px;
         }
+
         input[type="text"],
         input[type="number"],
         input[type="file"],
@@ -91,6 +126,7 @@ if (isset($_POST['submit'])) {
             border-radius: 5px;
             font-size: 14px;
         }
+
         button {
             background-color: #4CAF50;
             color: white;
@@ -99,6 +135,7 @@ if (isset($_POST['submit'])) {
             border: none;
             transition: background-color 0.3s;
         }
+
         button:hover {
             background-color: #45a049;
         }
@@ -106,7 +143,12 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
     <header>
-        <h1>Add Product</h1>
+        <div class="header-container">
+            <a href="dashboard.php">
+                <img src="img/logo.png" alt="Techie Tokkor Logo" class="logo">
+            </a>
+            <h1>Add Product</h1>
+        </div>
     </header>
     <main>
         <form method="post" enctype="multipart/form-data">

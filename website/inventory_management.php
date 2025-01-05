@@ -9,6 +9,8 @@ $result = mysqli_query($con, "SELECT * FROM products");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Management</title>
     <style>
+       
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -20,7 +22,7 @@ $result = mysqli_query($con, "SELECT * FROM products");
         header {
             background-color: #4CAF50;
             color: white;
-            padding: 20px 0; /* Decrease padding to reduce banner height */
+            padding: 10px 0; /* Reduced padding */
             position: fixed;
             top: 0;
             left: 0;
@@ -28,35 +30,38 @@ $result = mysqli_query($con, "SELECT * FROM products");
             z-index: 1000;
             display: flex;
             align-items: center;
+            height: 120px; /* Reduced height */
             justify-content: space-between;
-            height: 150px; /* Set a fixed height */
         }
 
         .header-container {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 20px;
+            margin-left: 20px;
         }
+        
 
         .logo {
-            width: 150px;
+            width: 140px;
             height: auto;
             margin-left: 35px;
-            margin-top: 10px;
+            border-radius: 8px;
         }
 
         header h1 {
             margin: 0;
             font-size: 24px;
             font-weight: bold;
+            color: white;
         }
 
         nav {
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            gap: 20px;
-            margin-right: 35px;
+            gap: 15px;
+            margin-right: 20px;
         }
 
         nav a {
@@ -64,14 +69,15 @@ $result = mysqli_query($con, "SELECT * FROM products");
             color: white;
             font-weight: bold;
             background: rgba(255, 255, 255, 0.2);
-            padding: 8px 16px;
-            border-radius: 4px;
+            padding: 10px 15px;
+            border-radius: 5px;
         }
 
         nav a:hover {
             background-color: white;
             color: #4CAF50;
         }
+
 
         main {
             max-width: 1200px;
@@ -81,18 +87,6 @@ $result = mysqli_query($con, "SELECT * FROM products");
             border-radius: 8px;
         }
 
-        a {
-            text-decoration: none;
-            color: white;
-            background-color: #4CAF50;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
-        a:hover {
-            background-color: #45a049;
-        }
 
         table {
             width: 100%;
@@ -121,7 +115,7 @@ $result = mysqli_query($con, "SELECT * FROM products");
             background-color: #f1f1f1;
         }
 
-        img {
+        td img {
             width: 70px;
             height: 70px;
             object-fit: cover;
@@ -132,6 +126,7 @@ $result = mysqli_query($con, "SELECT * FROM products");
             margin: 0 5px;
             padding: 8px 12px;
             border-radius: 4px;
+            text-decoration: none;
         }
 
         .actions a.edit {
@@ -151,6 +146,17 @@ $result = mysqli_query($con, "SELECT * FROM products");
         .actions a.delete:hover {
             background-color: #d32f2f;
         }
+        .new {
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .new:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -167,7 +173,7 @@ $result = mysqli_query($con, "SELECT * FROM products");
         </nav>
     </header>
     <main>
-        <a href="add_product.php">Add New Product</a>
+        <a class="new" href="add_product.php">Add New Product</a>
         <table>
             <thead>
                 <tr>

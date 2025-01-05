@@ -44,41 +44,66 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, 
         header {
             background-color: #4CAF50;
             color: white;
-            padding: 20px;
-            text-align: center;
+            padding: 10px 0; /* Reduced padding */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            height: 122px; /* Reduced height */
+            justify-content: space-between;
         }
 
-        header .nav {
-            margin-top: 10px;
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-left: 20px;
         }
 
-        header .nav a {
+        .logo {
+            width: 140px;
+            height: auto;
+            margin-left: 35px;
+            border-radius: 8px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            margin-right: 20px;
+        }
+
+        nav a {
             text-decoration: none;
             color: white;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
             font-weight: bold;
-            margin: 0 5px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 5px;
         }
 
-        header .nav a:hover {
+        nav a:hover {
             background-color: white;
             color: #4CAF50;
         }
 
         main {
             max-width: 1000px;
-            margin: 20px auto;
+            margin: 200px auto 30px;
             background: white;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            margin-bottom: 20px;
-            color: #333;
         }
 
         table {
@@ -157,10 +182,15 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, 
 </head>
 <body>
     <header>
-        <h1>Order Management</h1>
-        <div class="nav">
-            <a href="dashboard.php">Back to Dashboard</a>
+        <div class="header-container">
+            <a href="dashboard.php">
+                <img src="img/logo.png" alt="Techie Tokkor Logo" class="logo">
+            </a>
+            <h1>Order Management</h1>
         </div>
+        <nav>
+            <a href="dashboard.php">Back to Dashboard</a>
+        </nav>
     </header>
 
     <main>
@@ -205,7 +235,7 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, 
                             <td>
                                 <div class='action-buttons'>
                                     <a href='view_order.php?id={$row['oid']}' class='btn btn-view'>View</a>
-                                      <a href='order_management.php?delete_id={$row['oid']}' class='btn btn-delete' onclick='return confirm(\"Are you sure you want to delete this order?\")'>Delete</a>
+                                    <a href='order_management.php?delete_id={$row['oid']}' class='btn btn-delete' onclick='return confirm(\"Are you sure you want to delete this order?\")'>Delete</a>
                                 </div>
                             </td>
                         </tr>";
