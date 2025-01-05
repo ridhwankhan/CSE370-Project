@@ -2,6 +2,16 @@
 session_start();
 include("include/connect.php");
 
+// Ensure 'status' column exists in the 'orders' table
+$check_column_query = "SHOW COLUMNS FROM orders LIKE 'status'";
+$result = mysqli_query($con, $check_column_query);
+if (mysqli_num_rows($result) === 0) {
+    $add_column_query = "ALTER TABLE orders ADD COLUMN status VARCHAR(50) NOT NULL DEFAULT 'Pending';";
+    if (!mysqli_query($con, $add_column_query)) {
+        die("Error adding 'status' column: " . mysqli_error($con));
+    }
+}
+
 // Check if admin is logged in
 if (!isset($_SESSION['admin_logged_in'])) {
     header("Location: admin.php");
