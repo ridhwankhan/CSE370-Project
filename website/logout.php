@@ -1,13 +1,19 @@
 <?php
 include("include/connect.php");
 session_start();
-// Perform your desired action here
-$aid = $_SESSION['aid'];
-$query = "DELETE FROM CART WHERE aid = $aid";
 
-$result = mysqli_query($con, $query);
-$_SESSION['aid'] = -1;
+// Check if 'aid' exists in the session
+if (isset($_SESSION['aid']) && $_SESSION['aid'] != -1) {
+    $aid = intval($_SESSION['aid']); // Sanitize the 'aid' value
 
+    // Execute the query to delete items from the cart for the current user
+    $query = "DELETE FROM CART WHERE aid = $aid";
+    if (!mysqli_query($con, $query)) {
+        echo "Error deleting cart items: " . mysqli_error($con);
+    }
+}
+
+// Clear the session variables
 $_SESSION = array();
 
 // Destroy the session
@@ -15,4 +21,5 @@ session_destroy();
 
 // Redirect the user to the login page or home page
 header("Location: login.php");
+exit;
 ?>

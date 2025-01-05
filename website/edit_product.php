@@ -176,7 +176,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
 <header>
     <div class="header-container">
-        <a href="dashboard.php"><img src="img/logo.png" alt="Techie Tokkor Logo" class="logo"></a>
+        <a href="index.php"><img src="img/logo.png" alt="Techie Tokkor Logo" class="logo"></a>
         <h1>Edit Product</h1>
     </div>
 </header>

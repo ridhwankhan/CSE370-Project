@@ -23,6 +23,28 @@ if (isset($_GET['delete_id'])) {
     }
 }
 
+// Update order status and delivery date
+if (isset($_POST['order_id']) && isset($_POST['status'])) {
+    $order_id = intval($_POST['order_id']);
+    $status = $_POST['status'];
+
+    // Set delivery date to the current date for specific statuses
+    if ($status === 'Processing' || $status === 'Shipped' || $status === 'Delivered') {
+        date_default_timezone_set('Asia/Dhaka'); // Set the timezone
+        $delivery_date = date('Y-m-d');
+    } else {
+        $delivery_date = NULL; // Reset date if status is not relevant
+    }
+
+    $update_query = "UPDATE orders SET status = '$status', datedel = " . ($delivery_date ? "'$delivery_date'" : "NULL") . " WHERE oid = $order_id";
+
+    if (!mysqli_query($con, $update_query)) {
+        echo "Error updating order: " . mysqli_error($con);
+    } else {
+        echo "<script>alert('Order status and delivery date updated successfully!'); window.location.href = 'order_management.php';</script>";
+    }
+}
+
 // Fetch all orders
 $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, status FROM orders");
 ?>
@@ -212,7 +234,7 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, 
                 <?php
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $delivery_date = $row['datedel'] ?: 'Pending';
+                        $delivery_date = $row['datedel'] ? $row['datedel'] : 'Pending';
                         echo "<tr>
                             <td>{$row['oid']}</td>
                             <td>{$row['dateod']}</td>
@@ -221,7 +243,7 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, 
                             <td>{$row['address']}</td>
                             <td>\${$row['total']}</td>
                             <td>
-                                <form method='post' action='update_order_status.php'>
+                                <form method='post' action='order_management.php'>
                                     <input type='hidden' name='order_id' value='{$row['oid']}'>
                                     <select name='status'>
                                         <option value='Pending' " . ($row['status'] == 'Pending' ? 'selected' : '') . ">Pending</option>
@@ -236,6 +258,7 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, 
                                 <div class='action-buttons'>
                                     <a href='view_order.php?id={$row['oid']}' class='btn btn-view'>View</a>
                                     <a href='order_management.php?delete_id={$row['oid']}' class='btn btn-delete' onclick='return confirm(\"Are you sure you want to delete this order?\")'>Delete</a>
+                                </div>
                                 </div>
                             </td>
                         </tr>";
