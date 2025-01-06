@@ -100,24 +100,35 @@ if (isset($_GET['c'])) {
 
     <style>
     .tb {
-        max-height: 400px;
-        overflow-x: auto;
-        overflow-y: auto;
-    }
+    width: 100%; /* Make the table span the full width */
+    max-height: 500px;
+    overflow-x: auto;
+    overflow-y: auto;
+    border-collapse: separate;
+    border-spacing: 15px; /* Adds gaps between columns */
+}
 
+.tb th, .tb td {
+    text-align: center;
+    padding: 10px; /* Padding within each cell */
+    border: 1px solid #ddd; /* Optional: Add borders for clarity */
+}
 
+.tb th {
+    background-color: #f4f4f4; /* Optional: Add background for header */
+    font-weight: bold;
+}
 
-    .tb tr {
-        height: 60px;
-        margin: 10px;
-    }
+/* Target the Address column specifically */
+.tb th:nth-child(5), .tb td:nth-child(5) {
+    min-width: 300px; /* Explicitly set a minimum width */
+    max-width: 400px; /* Prevent it from getting too wide */
+    width: 400px; /* Define the width */
+    text-align: left; /* Align text to the left for readability */
+    word-wrap: break-word; /* Ensure the text wraps within the cell */
+    white-space: normal; /* Allow line breaks */
+}
 
-    .tb td {
-        text-align: center;
-        margin: 10px;
-        padding-left: 40px;
-        padding-right: 40px;
-    }
 
     .insert-btn {
         display: inline-block;
@@ -225,7 +236,7 @@ if (isset($_GET['c'])) {
             <li><a  href='signup.php'>SignUp</a></li>
             ";
         } else {
-          echo "   <li><a class='active'  href='profile.php'>profile</a></li>
+          echo "   <li><a class='active'  href='profile.php'>Profile</a></li>
           ";
         }
         ?>
@@ -474,6 +485,7 @@ if (isset($_GET['c'])) {
                   <th>Price</th>
                   <th>Review</th>
                   <th>Rating</th>
+                  
                 </tr>
                 </thead><tbody>";
 
@@ -528,6 +540,7 @@ if (isset($_GET['c'])) {
                                     <th>Date Delivered</th>
                                     <th>Total Price</th>
                                     <th>Address</th>
+                                    <th>Status</th>
                                     <th>Review</th>
                                 </tr>
                             </thead>
@@ -548,30 +561,34 @@ if (isset($_GET['c'])) {
           $datedel = $row['datedel'];
           $add = $row['address'];
           $pri = $row['total'];
+          $status = $row['status'];
+
           if (empty($datedel))
             $datedel = "Not Delivered";
-          echo "
-
-
-                <tr>
+            echo "
+            <tr>
                 <td>$oid</td>
-                    <td>$dateod</td>
-                    <td>$datedel</td>
-                    <td>$pri</td>
+                <td>$dateod</td>
+                <td>$datedel</td>
+                <td>$pri</td>
                 <td style='max-width: 300px; max-height: 100px; overflow-x: auto; overflow-y: auto;'>$add</td>
-                ";
-          if ($datedel != "Not Delivered") {
-
-            $query1 = "select* from reviews where oid = $oid";
-            $r = mysqli_query($con, $query1);
-            $w = mysqli_fetch_assoc($r);
-            if (empty($w))
-              echo "<td><a href='profile.php?odd=$oid'><button class='insert-btn'>Review</button></a></td>";
-            else
-              echo "<td>Reviewed</td>";
-          }
-          echo "</tr>";
-        }
+                <td>$status</td>
+            ";
+            if ($datedel != "Not Delivered") {
+                $query1 = "SELECT * FROM reviews WHERE oid = $oid";
+                $r = mysqli_query($con, $query1);
+                $w = mysqli_fetch_assoc($r);
+                if (empty($w)) {
+                    echo "<td><a href='profile.php?odd=$oid'><button class='insert-btn'>Review</button></a></td>";
+                } else {
+                    echo "<td>Reviewed</td>";
+                }
+            } else {
+                echo "<td></td>";
+            }
+            echo "</tr>";
+            
+}
 
         echo "</tbody>
                   </table>
