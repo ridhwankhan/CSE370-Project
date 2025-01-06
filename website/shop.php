@@ -133,10 +133,9 @@ session_start();
             $price = $row['price'];
             $cat = $row['category'];
             $img = $row['img'];
-            $brand = $row['brand'];
+            $brand = $row['brand']; // Directly fetch brand from the database
 
-           
-                    $query2 = "SELECT pid, AVG(rating) AS average_rating FROM reviews where pid = $pid GROUP BY pid ";
+            $query2 = "SELECT pid, AVG(rating) AS average_rating FROM reviews WHERE pid = $pid GROUP BY pid";
 
             $result2 = mysqli_query($con, $query2);
 
@@ -152,7 +151,7 @@ session_start();
 
             echo "
                     <div class='pro' onclick='topage($pid)'>
-                      <img src='product_images/$img' height='235px' width = '235px' alt='' />
+                      <img src='product_images/$img' height='235px' width='235px' alt='' />
                       <div class='des'>
                         <span>$brand</span>
                         <h5>$pname</h5>

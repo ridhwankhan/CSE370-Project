@@ -154,58 +154,61 @@ if (isset($_GET['nw'])) {
 
   if (isset($_GET['pid'])) {
     $pid = $_GET['pid'];
-    $query = "SELECT* FROM PRODUCTS WHERE pid = $pid";
+    $query = "SELECT * FROM PRODUCTS WHERE pid = $pid";
 
     $result = mysqli_query($con, $query);
-    $row = mysqli_fetch_assoc($result);
 
-    $pidd = $row['pid'];
-    $pname = $row['pname'];
+    if (mysqli_num_rows($result) > 0) {
+      $row = mysqli_fetch_assoc($result);
 
-    $desc = $row['description'];
-    $qty = $row['qtyavail'];
-    $price = $row['price'];
-    $cat = $row['category'];
-    $img = $row['img'];
-    $brand = $row['brand'];
+      $pidd = $row['pid'];
+      $pname = $row['pname'];
+      $desc = $row['description']; // Fetch description from the database
+      $qty = $row['qtyavail'];
+      $price = $row['price'];
+      $cat = $row['category'];
+      $img = $row['img'];
+      $brand = $row['brand'];
 
-    $aid = $_SESSION['aid'];
-    $query = "select * from wishlist where aid = $aid and pid = $pid";
-    $result = mysqli_query($con, $query);
-    $row = mysqli_fetch_assoc($result);
+      $aid = $_SESSION['aid'];
+      $query = "SELECT * FROM wishlist WHERE aid = $aid AND pid = $pid";
+      $result = mysqli_query($con, $query);
+      $row = mysqli_fetch_assoc($result);
 
-
-    echo "
+      echo "
       <section id='prodetails' class='section-p1'>
-        <div class='single-pro-image'>
-          <img src='product_images/$img' width='100%' id='MainImg' alt=' ' />
-        </div>
-        <div class='single-pro-details'>
-        
-          <h2>$pname</h2>
-          <h4>$cat - $brand</h4>
-          <h4>$$price</h4>
-          <form method='post'>
-          <input type='number' name='qty' value='1' min='1' max='$qty'/>
-          <button class='normal' name='submit'>Add to Cart</button>";
+          <div class='single-pro-image'>
+              <img src='product_images/$img' width='100%' id='MainImg' alt='' />
+          </div>
+          <div class='single-pro-details'>
+              <h2>$pname</h2>
+              <h4>$cat - $brand</h4>
+              <h4>$$price</h4>
+              <form method='post'>
+                  <input type='number' name='qty' value='1' min='1' max='$qty'/>
+                  <button class='normal' name='submit'>Add to Cart</button>";
+      
+      if ($row) {
+          echo "<a class='heart' href='sproduct.php?nw=$pid'><img src='img/full.png' style='margin: auto;' width='40px' height='40px' alt='' /></a>";
+      } else {
+          echo "<a class='heart' href='sproduct.php?w=$pid'><img src='img/empty.png' style='margin: auto;' width='40px' height='40px' alt='' /></a>";
+      }
 
-    if ($row)
-      echo "<a  class ='heart' href='sproduct.php?nw=$pid'><img src='img/full.png' style='
-            margin: auto; width='40px' height='40px'   alt=' ' /></a>";
-    else
-      echo "<a class ='heart' href='sproduct.php?w=$pid'><img src='img/empty.png' style='
-            margin: auto; ' width='40px' height='40px'  alt=' ' /></a>";
-
-            echo "
-            </form>
-            <h4>Product Details</h4>
-            <span>$desc
-            </span>";
-
-   
-
-  echo "</div></section>";
-}
+      echo "
+              </form>
+              <h4>Product Details</h4>
+              <p>$desc</p> <!-- Display the product description here -->
+          </div>
+      </section>";
+    } else {
+      echo "<section id='prodetails' class='section-p1'>
+          <div class='single-pro-details'>
+              <h2>Product Not Found</h2>
+              <p>The product you are looking for does not exist or has been removed.</p>
+          </div>
+      </section>";
+    }
+  }
 
 $query = "select * from reviews join orders on reviews.oid = orders.oid join accounts on orders.aid = accounts.aid where reviews.pid = $pid";
 $result = mysqli_query($con, $query);

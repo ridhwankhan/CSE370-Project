@@ -18,6 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $pname = mysqli_real_escape_string($con, $_POST['pname']);
     $category = mysqli_real_escape_string($con, $_POST['category']);
     $price = mysqli_real_escape_string($con, $_POST['price']);
+    $brand = mysqli_real_escape_string($con, $_POST['brand']);
+    $description = mysqli_real_escape_string($con, $_POST['description']);
 
     // Handle image upload
     if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
@@ -48,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Update product details in the database
-    $sql = "UPDATE products SET pname = '$pname', category = '$category', price = '$price', img = '{$product['img']}' WHERE pid = $id";
+    $sql = "UPDATE products SET pname = '$pname', category = '$category', price = '$price', img = '{$product['img']}', brand = '$brand', description = '$description' WHERE pid = $id";
 
     if (mysqli_query($con, $sql)) {
         echo "<script>alert('Product updated successfully!'); window.location.href='inventory_management.php';</script>";
@@ -130,12 +132,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             font-weight: bold;
         }
 
-        input, select {
+        input, select, textarea {
             padding: 10px;
             margin-bottom: 20px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            width: 100%;
+            width: calc(100% - 40px);
+            margin-left: 20px;
         }
 
         button {
@@ -212,6 +215,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <label for="category">Category:</label>
         <input type="text" id="category" name="category" value="<?php echo htmlspecialchars($product['category']); ?>" required>
+
+        <label for="brand">Brand:</label>
+        <input type="text" id="brand" name="brand" value="<?php echo htmlspecialchars($product['brand']); ?>" required>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" required><?php echo htmlspecialchars($product['description']); ?></textarea>
 
         <label for="price">Price:</label>
         <input type="number" id="price" name="price" value="<?php echo htmlspecialchars($product['price']); ?>" required>

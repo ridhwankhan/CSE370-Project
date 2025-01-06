@@ -6,6 +6,8 @@ if (isset($_POST['submit'])) {
     $category = mysqli_real_escape_string($con, $_POST['category']);
     $price = mysqli_real_escape_string($con, $_POST['price']);
     $qtyavail = mysqli_real_escape_string($con, $_POST['qtyavail']); // Capture available quantity
+    $brand = mysqli_real_escape_string($con, $_POST['brand']);
+    $description = mysqli_real_escape_string($con, $_POST['description']);
 
     // Handle file upload
     if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
@@ -21,10 +23,11 @@ if (isset($_POST['submit'])) {
 
             if (move_uploaded_file($imageTmpName, $imageDestination)) {
                 // Save product information to the database
-                $query = "INSERT INTO products (pname, category, price, qtyavail, img) 
-                          VALUES ('$pname', '$category', '$price', '$qtyavail', '$newImageName')";
+                $query = "INSERT INTO products (pname, category, price, qtyavail, img, brand, description ) 
+                          VALUES ('$pname', '$category', '$price', '$qtyavail', '$newImageName', '$brand','$description')";
                 if (mysqli_query($con, $query)) {
                     header("Location: inventory_management.php");
+                    exit(); // Ensure script stops after redirect
                 } else {
                     echo "Error: " . mysqli_error($con);
                 }
@@ -39,6 +42,7 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -139,6 +143,16 @@ if (isset($_POST['submit'])) {
         button:hover {
             background-color: #45a049;
         }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical; /* Allow vertical resizing */
+            margin-left: -10px; /* Add margin to the right */
+            
+        }
     </style>
 </head>
 <body>
@@ -161,12 +175,21 @@ if (isset($_POST['submit'])) {
                 <input type="text" name="category" id="category" required>
             </div>
             <div>
+                <label for="brand">Brand:</label>
+                <input type="text" name="brand" id="brand" required>
+            </div>
+
+            <div>
                 <label for="price">Price:</label>
                 <input type="number" name="price" id="price" required>
             </div>
             <div>
                 <label for="qtyavail">Quantity Available:</label>
                 <input type="number" name="qtyavail" id="qtyavail" min="1" required>
+            </div>
+            <div>
+                <label for="description">Description:</label>
+                <textarea name="description" id="description" rows="4" required ></textarea>
             </div>
             <div>
                 <label for="image">Product Image:</label>
