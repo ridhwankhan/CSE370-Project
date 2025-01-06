@@ -171,6 +171,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             background: #f4f4f4;
             color: #666;
         }
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: white;
+            color: #4CAF50;
+        }
     </style>
 </head>
 <body>
@@ -179,6 +200,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <a href="index.php"><img src="img/logo.png" alt="Techie Tokkor Logo" class="logo"></a>
         <h1>Edit Product</h1>
     </div>
+    <nav>
+        <a href="Dashboard.php">Dashboard</a>
+        <a href="logout.php">Logout</a>
+    </nav>
 </header>
 <main>
     <form action="" method="POST" enctype="multipart/form-data">

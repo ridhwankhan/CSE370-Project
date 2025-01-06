@@ -146,17 +146,7 @@ $result = mysqli_query($con, "SELECT * FROM products");
         .actions a.delete:hover {
             background-color: #d32f2f;
         }
-        .new {
-            text-decoration: none;
-            color: white;
-            background-color: #4CAF50;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        .new:hover {
-            background-color: #45a049;
-        }
+        
     </style>
 </head>
 <body>
@@ -168,12 +158,13 @@ $result = mysqli_query($con, "SELECT * FROM products");
             <h1>Product Management</h1>
         </div>
         <nav>
+            <a href= "add_product.php">Add Products</a>
             <a href="dashboard.php">Dashboard</a>
             <a href="logout.php">Logout</a>
         </nav>
     </header>
     <main>
-        <a class="new" href="add_product.php">Add New Product</a>
+        
         <table>
             <thead>
                 <tr>

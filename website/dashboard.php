@@ -161,7 +161,6 @@ if (!isset($_SESSION['admin_logged_in'])) {
             <h1>Welcome to the Admin Dashboard</h1>
         </div>
         <nav>
-            <a href="inventory_management.php">Manage Products</a>
             <a href="order_management.php">View Orders</a>
             <a href="logout.php">Logout</a>
         </nav>
@@ -210,7 +209,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
             <h2 align="center">Quick Actions</h2>
             <div align="center"  class="Bars">
                 <a href="add_product.php">Add New Product</a>
-                <a href="order_management.php">Manage Orders</a>
+                <a href="inventory_management.php">Manage Products</a>
             </div>
         </section>
     </main>

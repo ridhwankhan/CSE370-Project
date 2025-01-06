@@ -144,7 +144,7 @@ if (isset($_POST['submit'])) {
 <body>
     <header>
         <div class="header-container">
-            <a href="dashboard.php">
+            <a href="index.php">
                 <img src="img/logo.png" alt="Techie Tokkor Logo" class="logo">
             </a>
             <h1>Add Product</h1>
