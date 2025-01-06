@@ -31,7 +31,7 @@ CREATE TABLE `accounts` (
   `aid` int(11) NOT NULL,
   `afname` varchar(100) NOT NULL,
   `alname` varchar(100) NOT NULL,
-  `phone` char(11) NOT NULL,
+  `phone` char(11),
   `email` varchar(100) NOT NULL,
   `cnic` char(13) NOT NULL,
   `dob` date NOT NULL,
@@ -201,7 +201,7 @@ ALTER TABLE `accounts`
   ADD PRIMARY KEY (`aid`),
   ADD UNIQUE KEY `cnic` (`cnic`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `phone` (`phone`),
+
   ADD UNIQUE KEY `username` (`username`);
 
 --
