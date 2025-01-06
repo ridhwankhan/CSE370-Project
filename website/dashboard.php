@@ -25,74 +25,76 @@ if (!isset($_SESSION['admin_logged_in'])) {
         }
 
         header {
-        background-color: #4CAF50;
-        color: white;
-        padding: 20px 0; /* Decrease padding to reduce banner height */
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 150px; /* Set a fixed height */
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            height: 122px;
+            justify-content: space-between;
         }
-
 
         .header-container {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 20px;
+            margin-left: 20px;
         }
 
         .logo {
-            width: 150px;
+            width: 140px;
             height: auto;
             margin-left: 35px;
-            margin-top: 15px;
+            border-radius: 8px;
         }
 
         header h1 {
             margin: 0;
             font-size: 24px;
             font-weight: bold;
+            color: white;
         }
 
-        header nav {
-    display: flex;
-    justify-content: flex-end; /* Align items to the right */
-    margin-right: 35px; /* Add spacing on the right */
-    gap: 20px; /* Space between buttons */
-    }
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            margin-right: 20px;
+        }
 
-    nav a {
-        text-decoration: none;
-        color: white;
-        font-weight: bold;
-        background: rgba(255, 255, 255, 0.2);
-        padding: 8px 16px;
-        border-radius: 4px;
-    }
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
 
-    nav a:hover {
-        background-color: white;
-        color: #4CAF50;
-     }
+        nav a:hover {
+            background-color: white;
+            color: #4CAF50;
+        }
 
 
         main {
-        margin-top: 250px; /* Adjust to match the reduced height of the header */
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 20px;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 150px; /* Adjusted to match the reduced header height */
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
-        h2 {
+        h1, h2 {
             color: #444;
             margin-bottom: 20px;
         }
@@ -108,7 +110,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
         }
 
         th, td {
-            padding: 20px;
+            padding: 10px;
             text-align: center;
         }
 
@@ -132,11 +134,11 @@ if (!isset($_SESSION['admin_logged_in'])) {
             color: #666;
         }
 
-        div {
+        .Bars {
             margin-bottom: 20px;
         }
 
-        div a {
+        .Bars a {
             margin-right: 10px;
             text-decoration: none;
             color: #4CAF50;
@@ -146,7 +148,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
             border-radius: 4px;
         }
 
-        div a:hover {
+        .Bars a:hover {
             background: #4CAF50;
             color: white;
         }
@@ -206,7 +208,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
 
         <section>
             <h2 align="center">Quick Actions</h2>
-            <div align="center">
+            <div align="center"  class="Bars">
                 <a href="add_product.php">Add New Product</a>
                 <a href="order_management.php">Manage Orders</a>
             </div>
@@ -214,7 +216,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
     </main>
 
     <footer>
-        <p>© 2025 Techie Tokkor. </p>
+        <p>© 2025 Techie Tokkor.</p>
     </footer>
 </body>
 </html>

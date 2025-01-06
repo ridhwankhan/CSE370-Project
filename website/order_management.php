@@ -2,6 +2,16 @@
 session_start();
 include("include/connect.php");
 
+// Ensure 'status' column exists in the 'orders' table
+$check_column_query = "SHOW COLUMNS FROM orders LIKE 'status'";
+$result = mysqli_query($con, $check_column_query);
+if (mysqli_num_rows($result) === 0) {
+    $add_column_query = "ALTER TABLE orders ADD COLUMN status VARCHAR(50) NOT NULL DEFAULT 'Pending';";
+    if (!mysqli_query($con, $add_column_query)) {
+        die("Error adding 'status' column: " . mysqli_error($con));
+    }
+}
+
 // Check if admin is logged in
 if (!isset($_SESSION['admin_logged_in'])) {
     header("Location: admin.php");
@@ -20,6 +30,28 @@ if (isset($_GET['delete_id'])) {
         exit;
     } else {
         echo "<script>alert('Error deleting the order.'); window.location.href = 'order_management.php';</script>";
+    }
+}
+
+// Update order status and delivery date
+if (isset($_POST['order_id']) && isset($_POST['status'])) {
+    $order_id = intval($_POST['order_id']);
+    $status = $_POST['status'];
+
+    // Set delivery date to the current date for specific statuses
+    if ($status === 'Delivered') {
+        date_default_timezone_set('Asia/Dhaka'); // Set the timezone
+        $delivery_date = date('Y-m-d');
+    } else {
+        $delivery_date = NULL; // Reset date if status is not relevant
+    }
+
+    $update_query = "UPDATE orders SET status = '$status', datedel = " . ($delivery_date ? "'$delivery_date'" : "NULL") . " WHERE oid = $order_id";
+
+    if (!mysqli_query($con, $update_query)) {
+        echo "Error updating order: " . mysqli_error($con);
+    } else {
+        echo "<script>alert('Order status and delivery date updated successfully!'); window.location.href = 'order_management.php';</script>";
     }
 }
 
@@ -44,41 +76,66 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, 
         header {
             background-color: #4CAF50;
             color: white;
-            padding: 20px;
-            text-align: center;
+            padding: 10px 0; /* Reduced padding */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            height: 122px; /* Reduced height */
+            justify-content: space-between;
         }
 
-        header .nav {
-            margin-top: 10px;
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-left: 20px;
         }
 
-        header .nav a {
+        .logo {
+            width: 140px;
+            height: auto;
+            margin-left: 35px;
+            border-radius: 8px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            margin-right: 20px;
+        }
+
+        nav a {
             text-decoration: none;
             color: white;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
             font-weight: bold;
-            margin: 0 5px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 5px;
         }
 
-        header .nav a:hover {
+        nav a:hover {
             background-color: white;
             color: #4CAF50;
         }
 
         main {
             max-width: 1000px;
-            margin: 20px auto;
+            margin: 200px auto 30px;
             background: white;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            margin-bottom: 20px;
-            color: #333;
         }
 
         table {
@@ -157,10 +214,15 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, 
 </head>
 <body>
     <header>
-        <h1>Order Management</h1>
-        <div class="nav">
-            <a href="dashboard.php">Back to Dashboard</a>
+        <div class="header-container">
+            <a href="dashboard.php">
+                <img src="img/logo.png" alt="Techie Tokkor Logo" class="logo">
+            </a>
+            <h1>Order Management</h1>
         </div>
+        <nav>
+            <a href="dashboard.php">Back to Dashboard</a>
+        </nav>
     </header>
 
     <main>
@@ -182,7 +244,13 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, 
                 <?php
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $delivery_date = $row['datedel'] ?: 'Pending';
+                        // Determine the delivery date based on the status
+                        if ($row['status'] === 'Pending' || $row['status'] === 'Processing' || $row['status'] === 'Shipped') {
+                            $delivery_date = $row['status']; // Display the status as the delivery date
+                        } else {
+                            $delivery_date = $row['datedel'] ? $row['datedel'] : 'Not Set'; // Display the actual date for Delivered or 'Not Set'
+                        }
+
                         echo "<tr>
                             <td>{$row['oid']}</td>
                             <td>{$row['dateod']}</td>
@@ -191,7 +259,7 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, 
                             <td>{$row['address']}</td>
                             <td>\${$row['total']}</td>
                             <td>
-                                <form method='post' action='update_order_status.php'>
+                                <form method='post' action='order_management.php'>
                                     <input type='hidden' name='order_id' value='{$row['oid']}'>
                                     <select name='status'>
                                         <option value='Pending' " . ($row['status'] == 'Pending' ? 'selected' : '') . ">Pending</option>
@@ -205,7 +273,7 @@ $result = mysqli_query($con, "SELECT oid, dateod, datedel, aid, address, total, 
                             <td>
                                 <div class='action-buttons'>
                                     <a href='view_order.php?id={$row['oid']}' class='btn btn-view'>View</a>
-                                      <a href='order_management.php?delete_id={$row['oid']}' class='btn btn-delete' onclick='return confirm(\"Are you sure you want to delete this order?\")'>Delete</a>
+                                    <a href='order_management.php?delete_id={$row['oid']}' class='btn btn-delete' onclick='return confirm(\"Are you sure you want to delete this order?\")'>Delete</a>
                                 </div>
                             </td>
                         </tr>";
