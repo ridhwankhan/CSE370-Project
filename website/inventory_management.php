@@ -2,7 +2,11 @@
 session_start();
 if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin1') {
 
-    header("Location: index.php"); 
+    echo "<script>
+            alert('You are not an admin');
+            window.location.href = 'index.php';
+          </script>";
+    // header("Location: index.php"); 
     exit();
 }
 
