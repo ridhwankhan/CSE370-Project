@@ -153,6 +153,27 @@ if (isset($_POST['submit'])) {
             margin-left: -10px; /* Add margin to the right */
             
         }
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: white;
+            color: #4CAF50;
+        }
     </style>
 </head>
 <body>
@@ -163,6 +184,10 @@ if (isset($_POST['submit'])) {
             </a>
             <h1>Add Product</h1>
         </div>
+        <nav>
+            <a href="Dashboard.php">Back to Dashboard</a>
+            <a href="logout.php">Logout</a>
+        </nav>
     </header>
     <main>
         <form method="post" enctype="multipart/form-data">
