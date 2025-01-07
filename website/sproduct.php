@@ -170,7 +170,13 @@ if (isset($_GET['nw'])) {
       $img = $row['img'];
       $brand = $row['brand'];
 
-      $aid = $_SESSION['aid'];
+      if (!isset($_SESSION['aid']) || $_SESSION['aid'] < 0) {
+        // User is not logged in, redirect to login
+        header("Location: login.php");
+        exit();
+    }
+    $aid = $_SESSION['aid'];
+    
       $query = "SELECT * FROM wishlist WHERE aid = $aid AND pid = $pid";
       $result = mysqli_query($con, $query);
       $row = mysqli_fetch_assoc($result);
