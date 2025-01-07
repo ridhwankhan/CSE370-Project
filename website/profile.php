@@ -610,11 +610,11 @@ if (isset($_GET['c'])) {
                 <img class="logo" src="img/logo.png" width="120", height="100"/>
                 <h4>Contact</h4>
                 <p>
-                    <strong>Address: </strong> <address></address>
+                    <strong>Address: </strong> <address>Kha 224, Bir Uttam Rafiqul Islam Ave, Dhaka 1212</address>
 
                 </p>
                 <p>
-                    <strong>Phone: </strong> phone
+                    <strong>Phone: </strong> +01718175150
                 </p>
                 <p>
                     <strong>Hours: </strong> 9am-5pm

@@ -118,7 +118,7 @@ session_start();
 
             </p>
             <p>
-                <strong>Phone: </strong> +8801718175150 
+                <strong>Phone: </strong> +01718175150 
             </p>
             <p>
                 <strong>Hours: </strong> 9am-5pm

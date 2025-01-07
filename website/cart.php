@@ -238,11 +238,11 @@ if (isset($_POST['check'])) {
             <img class="logo" src="img/logo.png" />
             <h4>Contact</h4>
             <p>
-                <strong>Address: </strong> Street 2, Johar Town Block A,Lahore
+                <strong>Address: </strong> Kha 224, Bir Uttam Rafiqul Islam Ave, Dhaka 1212
 
             </p>
             <p>
-                <strong>Phone: </strong> +92324953752
+                <strong>Phone: </strong> +01718175150
             </p>
             <p>
                 <strong>Hours: </strong> 9am-5pm

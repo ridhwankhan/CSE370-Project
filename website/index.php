@@ -146,10 +146,11 @@ if (empty($_SESSION['aid']))
 
             </p>
             <p>
-                <strong>Phone: </strong> 018254728121
+                <strong>Phone: </strong> +01718175150
+
             </p>
             <p>
-                <strong>Hours: </strong> 9-5
+                <strong>Hours: </strong> 9am-5pm
             </p>
         </div>
 
