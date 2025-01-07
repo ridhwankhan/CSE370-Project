@@ -45,10 +45,10 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`aid`, `afname`, `alname`, `phone`, `email`, `cnic`, `dob`, `username`, `gender`, `password`) VALUES
-(5, 'laraib', 'akhtar', '03150100830', 'laraibakhtar40@gmail.com', '3530231218003', '2023-05-03', 'admin1', 'M', 'admin123'),
-(14, 'laraib', 'akhtar', '16050920011', 'laraibakhtr40@gmail.com', '1234567890000', '2023-05-02', 'laraib', 'M', '12345678'),
-(18, 'abdullah', 'naeem', '1160509201', 'abdullahnaeem@gmail.com', '3333333333333', '2023-05-10', 'abdullah', 'M', '12345678'),
-(20, 'Qasim', 'Naveed', '03246491212', 'qasimnaveed@gmail.com', '3530230218003', '2000-02-16', 'Qasimzaps7', 'M', '987654321');
+(5, 'Ridhwanur', 'Rahman Khan', '0171817515o', 'ridwahnkhan03@gmail.com', '123131230123012', '2001-12-03', 'admin1', 'M', 'admin123'),
+(14, 'Ridwanur', 'Rahman', '01834567823', 'ridwanurrahman@gmail.com', '123123123123123', '2003-05-02', 'ridwan', 'M', 'ridwan'),
+(18, 'Nowmee', 'Binte Mamun', '01533232322', 'owarabintemamun@gmail.com', '243243243333333', '2000-09-30', 'nowmee', 'M', 'ridwan'),
+(20, 'Quaso', 'Naveed', '01746491212', 'chikichiki@gmail.com', '3530230218003', '2000-02-16', 'quaso', 'M', 'quaso');
 
 -- --------------------------------------------------------
 
