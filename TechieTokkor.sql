@@ -45,10 +45,10 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`aid`, `afname`, `alname`, `phone`, `email`, `cnic`, `dob`, `username`, `gender`, `password`) VALUES
-(5, 'Ridhwanur', 'Rahman Khan', '0171817515o', 'ridwahnkhan03@gmail.com', '123131230123012', '2001-12-03', 'admin1', 'M', 'admin123'),
-(14, 'Ridwanur', 'Rahman', '01834567823', 'ridwanurrahman@gmail.com', '123123123123123', '2003-05-02', 'ridwan', 'M', 'ridwan'),
-(18, 'Nowmee', 'Binte Mamun', '01533232322', 'owarabintemamun@gmail.com', '243243243333333', '2000-09-30', 'nowmee', 'M', 'ridwan'),
-(20, 'Quaso', 'Naveed', '01746491212', 'chikichiki@gmail.com', '3530230218003', '2000-02-16', 'quaso', 'M', 'quaso');
+(5, 'Ridhwanur', 'Rahman Khan', '0171817515o', 'ridwahnkhan03@gmail.com', '123129831908', '2001-12-03', 'admin1', 'M', 'admin123'),
+(14, 'Ridwanur', 'Rahman', '01834567823', 'ridwanurrahman@gmail.com', '2139812839012823', '2003-05-02', 'ridwan', 'M', 'ridwan'),
+(18, 'Nowmee', 'Binte Mamun', '01533232322', 'owarabintemamun@gmail.com', '1234912131224141', '2000-09-30', 'nowmee', 'M', 'ridwan'),
+(20, 'Quaso', 'Naveed', '01746491212', 'chikichiki@gmail.com', '353023021318003', '2000-02-16', 'quaso', 'M', 'quaso');
 
 -- --------------------------------------------------------
 
@@ -106,9 +106,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`oid`, `dateod`, `datedel`, `aid`, `address`, `city`, `country`, `account`, `total`) VALUES
-(17, '2023-05-15', '2023-05-15', 14, 'Faisal town b block', 'Lahore', 'Pakistan', NULL, 375),
-(18, '2023-05-15', '2023-05-15', 20, 'Johar Town Block A', 'Lahore', 'Pakistan', NULL, 130),
-(19, '2023-05-15', '2023-05-15', 18, 'House32A,Model Town ', 'Lahore', 'Pakistan', '3120246834724793', 380);
+(17, '2023-05-15', '2023-05-15', 14, 'big town b block', 'uttara', 'dhaka', NULL, 375),
+(18, '2023-05-15', '2023-05-15', 20, 'Johar Town Block A', 'cheng chung', 'faridpur', NULL, 130),
+(19, '2023-05-15', '2023-05-15', 18, 'House32A,Model Town ', 'uwu', 'BRACU', '3120246834724793', 380);
 
 -- --------------------------------------------------------
 
