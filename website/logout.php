@@ -19,7 +19,10 @@ $_SESSION = array();
 // Destroy the session
 session_destroy();
 
-// Redirect the user to the login page or home page
-header("Location: login.php");
+// Show a popup message and then redirect
+echo "<script>
+    alert('Logged out Successfully');
+    window.location.href = 'login.php';
+</script>";
 exit;
 ?>

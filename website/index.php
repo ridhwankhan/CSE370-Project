@@ -37,11 +37,11 @@ if (empty($_SESSION['aid']))
                 <?php
                 if (isset($_SESSION['aid']) && $_SESSION['aid'] >= 0) {
                     // User is logged in
-                    echo "   <li><a href='profile.php'>profile</a></li>";
+                    echo "   <li><a href='profile.php'>Profile</a></li>";
                     echo "<li><a href='logout.php'>Logout</a></li>";
                 } else {
                     // User is not logged in
-                    echo "   <li><a href='login.php'>login</a></li>
+                    echo "   <li><a href='login.php'>Login</a></li>
                             <li><a href='signup.php'>SignUp</a></li>";
                 }
                 ?>
@@ -59,11 +59,7 @@ if (empty($_SESSION['aid']))
         </div>
     </section>
 
-    <section id="hero">
-        <!-- <h4>Trade-in-offer</h4>
-        <h2>Super value deals</h2>
-        <h1>On all products</h1>
-        <p>Save more with coupons & up to 70% off!</p> -->
+    <section id="hero">>
         <a href="shop.php">
             <button>Shop Now</button>
         </a>

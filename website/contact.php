@@ -32,11 +32,11 @@ session_start();
                 <?php
                 if (isset($_SESSION['aid']) && $_SESSION['aid'] >= 0) {
                     // User is logged in
-                    echo "   <li><a href='profile.php'>profile</a></li>";
+                    echo "   <li><a href='profile.php'>Profile</a></li>";
                     echo "<li><a href='logout.php'>Logout</a></li>";
                 } else {
                     // User is not logged in
-                    echo "   <li><a href='login.php'>login</a></li>
+                    echo "   <li><a href='login.php'>Login</a></li>
                             <li><a href='signup.php'>SignUp</a></li>";
                 }
                 ?>

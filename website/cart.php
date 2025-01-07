@@ -91,7 +91,7 @@ if (isset($_POST['check'])) {
                 <?php
                 if (isset($_SESSION['aid']) && $_SESSION['aid'] >= 0) {
                     // User is logged in
-                    echo "   <li><a href='profile.php'>profile</a></li>";
+                    echo "<li><a href='profile.php'>Profile</a></li>";
                     echo "<li><a href='logout.php'>Logout</a></li>";
                 } else {
                     // User is not logged in

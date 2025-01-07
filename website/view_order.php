@@ -1,4 +1,9 @@
 <?php
+if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin1') {
+
+    header("Location: index.php"); 
+    exit();
+}
 session_start();
 include("include/connect.php");
 
@@ -47,127 +52,7 @@ $user = mysqli_fetch_assoc($user_result);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Details</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f5f7;
-            color: #333;
-        }
-
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 0; /* Reduced padding */
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            height: 122px; /* Reduced height */
-            justify-content: space-between;
-        }
-
-        .header-container {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-left: 20px;
-        }
-        
-
-        .logo {
-            width: 140px;
-            height: auto;
-            margin-left: 35px;
-            border-radius: 8px;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-        }
-
-        nav {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 15px;
-            margin-right: 20px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
-
-        nav a:hover {
-            background-color: white;
-            color: #4CAF50;
-        }
-
-        main {
-            max-width: 1200px;
-            margin: 200px auto 30px;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        h1, h2 {
-            margin-bottom: 20px;
-            color: #444;
-        }
-
-        section {
-            margin-bottom: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: center;
-        }
-
-        th {
-            background-color: #f4f4f4;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        footer {
-            margin-top: 20px;
-            text-align: center;
-            padding: 10px;
-            background: #f4f4f4;
-            color: #666;
-        }
-    </style>
+    <link rel="stylesheet" href="css/view_order.css">
 </head>
 <body>
     <header>

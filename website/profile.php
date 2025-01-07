@@ -1,13 +1,15 @@
 <?php
-session_start();
-
+session_start(); 
 
 if (isset($_GET['lo'])) {
-  $_SESSION['aid'] = -1;
-  header("Location: index.php");
+  session_start();
+  $_SESSION = array();
+  session_destroy();
+  header("Location: index.php"); // Redirect to the homepage or login page
   exit();
-
 }
+
+
 
 if (isset($_POST['submit'])) {
   include("include/connect.php");
@@ -300,7 +302,7 @@ if (isset($_GET['c'])) {
 
             <div class="sidenav-url">
                 <div class="url">
-                    <a href='profile.php?lo=1' class="btn logup">Log out</a>
+                    <a href="logout.php" class="btn logup">Log out</a>
                     <hr allign="center">
                 </div>
                 <div class="url">
@@ -677,12 +679,3 @@ if (isset($_GET['c'])) {
 </body>
 
 </html>
-
-<script>
-window.addEventListener("unload", function() {
-  // Call a PHP script to log out the user
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", "logout.php", false);
-  xhr.send();
-});
-</script>

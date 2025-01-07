@@ -1,4 +1,11 @@
 <?php
+
+if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin1') {
+
+    header("Location: index.php"); 
+    exit();
+}
+
 include("include/connect.php");
 $id = $_GET['id'];
 

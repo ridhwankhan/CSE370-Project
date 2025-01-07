@@ -1,4 +1,11 @@
 <?php
+session_start();
+if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin1') {
+
+    header("Location: index.php"); 
+    exit();
+}
+
 include("include/connect.php");
 
 if (isset($_POST['submit'])) {
@@ -49,132 +56,8 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Product</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f5f7;
-            color: #333;
-        }
-
-        header {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 0; /* Adjust padding */
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        height: 122px; /* Adjust height */
-        justify-content: space-between;
-    }
-
-
-
-        .header-container {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-left: 20px;
-        }
-
-        .logo {
-            width: 140px;
-            height: auto;
-            margin-left: 35px;
-            border-radius: 8px;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        main {
-            max-width: 600px;
-            margin: 200px auto 30px;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #444;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        label {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"],
-        input[type="number"],
-        input[type="file"],
-        button {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            border: none;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-        textarea {
-            width: 100%;
-            padding: 10px;
-            font-size: 14px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            resize: vertical; /* Allow vertical resizing */
-            margin-left: -10px; /* Add margin to the right */
-            
-        }
-        nav {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 15px;
-            margin-right: 20px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
-
-        nav a:hover {
-            background-color: white;
-            color: #4CAF50;
-        }
-    </style>
+    <link rel="stylesheet" href="css/add_product.css">
+    
 </head>
 <body>
     <header>

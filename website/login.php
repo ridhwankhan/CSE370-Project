@@ -13,24 +13,16 @@ if (isset($_POST['submit'])) {
     $result = mysqli_query($con, $query);
 
     if (mysqli_num_rows($result) > 0) {
-
         $row = mysqli_fetch_assoc($result);
-
-
-
         $_SESSION['aid'] = $row['aid'];
-
-
-
         header("Location: profile.php");
         exit();
-
     }
     else
-    {
-         echo "<script> alert('Wrong credentials') </script>";
+        {
+            echo "<script> alert('Wrong credentials') </script>";
+        }
     }
-}
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +51,7 @@ if (isset($_POST['submit'])) {
                 <li><a href="shop.php">Shop</a></li>
                 <li><a href="about.php">About</a></li>
                 <li><a href="contact.php">Contact</a></li>
-                <li><a class="active" href="login.php">login</a></li>
+                <li><a class="active" href="login.php">Login</a></li>
                 <li><a href="signup.php">SignUp</a></li>
                 <li><a href="admin.php">Admin</a></li>
                 <li id="lg-bag">
@@ -123,12 +115,3 @@ if (isset($_POST['submit'])) {
 </body>
 
 </html>
-
-<script>
-window.addEventListener("unload", function() {
-  // Call a PHP script to log out the user
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", "logout.php", false);
-  xhr.send();
-});
-</script>

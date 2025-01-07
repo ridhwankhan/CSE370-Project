@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
                 <li><a href="shop.php">Shop</a></li>
                 <li><a href="about.php">About</a></li>
                 <li><a href="contact.php">Contact</a></li>
-                <li><a href="login.php">login</a></li>
+                <li><a href="login.php">Login</a></li>
                 <li><a class="active" href="signup.php">SignUp</a></li>
                 <li><a href="admin.php">Admin</a></li>
                 <li id="lg-bag">

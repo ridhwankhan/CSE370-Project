@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin1') {
+
+    header("Location: index.php"); 
+    exit();
+}
 include("include/connect.php");
 
 // Fetch product details
@@ -66,136 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Product</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f5f7;
-            color: #333;
-        }
-
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            height: 121px;
-            justify-content: space-between;
-        }
-
-        .header-container {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-left: 20px;
-        }
-
-        .logo {
-            width: 140px;
-            height: auto;
-            margin-left: 35px;
-            border-radius: 8px;;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-        }
-
-        main {
-        margin-top: 150px; /* Adjusted for more spacing below the header */
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 20px;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        input, select, textarea {
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            width: calc(100% - 40px);
-            margin-left: 20px;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        .image-preview {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .image-preview img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            padding: 10px;
-            background: #f4f4f4;
-            color: #666;
-        }
-        nav {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 15px;
-            margin-right: 20px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
-
-        nav a:hover {
-            background-color: white;
-            color: #4CAF50;
-        }
-    </style>
+    <link rel="stylesheet" href="css/edit_product.css">
 </head>
 <body>
 <header>

@@ -41,7 +41,7 @@ session_start();
                     echo "<li><a href='logout.php'>Logout</a></li>";
                 } else {
                     // User is not logged in
-                    echo "   <li><a href='login.php'>login</a></li>
+                    echo "   <li><a href='login.php'>Login</a></li>
                             <li><a href='signup.php'>SignUp</a></li>";
                 }
                 ?>

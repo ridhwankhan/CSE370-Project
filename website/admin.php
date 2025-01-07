@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 include("include/connect.php"); // Ensure this file connects to the database
 
 if (isset($_POST['submit'])) {

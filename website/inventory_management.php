@@ -1,4 +1,11 @@
 <?php
+session_start();
+if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin1') {
+
+    header("Location: index.php"); 
+    exit();
+}
+
 include("include/connect.php");
 $result = mysqli_query($con, "SELECT * FROM products");
 ?>
@@ -8,146 +15,7 @@ $result = mysqli_query($con, "SELECT * FROM products");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Management</title>
-    <style>
-       
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f5f7;
-            color: #333;
-        }
-
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 0; /* Reduced padding */
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            height: 120px; /* Reduced height */
-            justify-content: space-between;
-        }
-
-        .header-container {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-left: 20px;
-        }
-        
-
-        .logo {
-            width: 140px;
-            height: auto;
-            margin-left: 35px;
-            border-radius: 8px;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-        }
-
-        nav {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 15px;
-            margin-right: 20px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
-
-        nav a:hover {
-            background-color: white;
-            color: #4CAF50;
-        }
-
-
-        main {
-            max-width: 1200px;
-            margin: 200px auto 30px;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: center;
-        }
-
-        th {
-            background-color: #f4f4f4;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        td img {
-            width: 70px;
-            height: 70px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .actions a {
-            margin: 0 5px;
-            padding: 8px 12px;
-            border-radius: 4px;
-            text-decoration: none;
-        }
-
-        .actions a.edit {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .actions a.edit:hover {
-            background-color: #45a049;
-        }
-
-        .actions a.delete {
-            background-color: #f44336;
-            color: white;
-        }
-
-        .actions a.delete:hover {
-            background-color: #d32f2f;
-        }
-        
-    </style>
+    <link rel="stylesheet" href="css/inventory_management.css">
 </head>
 <body>
     <header>
