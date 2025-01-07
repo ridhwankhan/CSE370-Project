@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin1') {
     echo "<script>
             alert('You are not an admin');
@@ -8,7 +9,7 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin1') {
     // header("Location: index.php"); 
     exit();
 }
-session_start();
+
 include("include/connect.php");
 
 // Check if the admin is logged in
