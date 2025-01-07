@@ -86,17 +86,20 @@ if (isset($_POST['check'])) {
                 <li><a href="about.php">About</a></li>
                 <li><a href="contact.php">Contact</a></li>
 
-                <?php
+            
 
-                if ($_SESSION['aid'] < 0) {
-                    echo "   <li><a href='login.php'>login</a></li>
-            <li><a href='signup.php'>SignUp</a></li>
-            ";
+                <?php
+                if (isset($_SESSION['aid']) && $_SESSION['aid'] >= 0) {
+                    // User is logged in
+                    echo "   <li><a href='profile.php'>profile</a></li>";
+                    echo "<li><a href='logout.php'>Logout</a></li>";
                 } else {
-                    echo "   <li><a href='profile.php'>profile</a></li>
-          ";
+                    // User is not logged in
+                    echo "   <li><a href='login.php'>login</a></li>
+                            <li><a href='signup.php'>SignUp</a></li>";
                 }
                 ?>
+
                 <li><a href="admin.php">Admin</a></li>
                 <li id="lg-bag">
                     <a class="active" href="cart.php"><i class="far fa-shopping-bag"></i></a>

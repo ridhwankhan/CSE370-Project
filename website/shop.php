@@ -52,6 +52,8 @@ session_start();
                 <?php
                 if (isset($_SESSION['aid']) && $_SESSION['aid'] >= 0) {
                     echo "<li><a href='profile.php'>Profile</a></li>";
+                    echo "<li><a href='logout.php'>Logout</a></li>";
+
                 } else {
                     echo "<li><a href='login.php'>Login</a></li>
                           <li><a href='signup.php'>SignUp</a></li>";
