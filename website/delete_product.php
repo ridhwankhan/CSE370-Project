@@ -1,14 +1,5 @@
 <?php
 
-if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin1') {
-    echo "<script>
-            alert('You are not an admin');
-            window.location.href = 'index.php';
-          </script>";
-    // header("Location: index.php"); 
-    exit();
-}
-
 include("include/connect.php");
 $id = $_GET['id'];
 
