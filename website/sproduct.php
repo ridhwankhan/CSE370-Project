@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 if (isset($_POST['submit'])) {
   include("include/connect.php");
   $pid = $_GET['pid'];
@@ -10,7 +11,7 @@ if (isset($_POST['submit'])) {
   if ($aid < 0) {
     header("Location: login.php");
     exit();
-  }
+  } 
 
   $query = "select * from `cart`  where aid = $aid and pid = $pid";
 
@@ -34,10 +35,10 @@ if (isset($_POST['submit'])) {
 if (isset($_GET['w'])) {
   include("include/connect.php");
   $aid = $_SESSION['aid'];
-  if ($aid < 0) {
-    header("Location: login.php");
-    exit();
-  }
+  // if ($aid < 0) {
+  //   header("Location: login.php");
+  //   exit();
+  // }
   $pid = $_GET['w'];
 
   $query = "INSERT INTO `WISHLIST` (aid, pid) values ($aid, $pid)";

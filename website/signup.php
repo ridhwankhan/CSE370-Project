@@ -21,11 +21,12 @@ if (isset($_POST['submit'])) {
         echo "<script> alert('Credentials already exists'); setTimeout(function(){ window.location.href = 'signup.php'; }, 100); </script>";
         exit();
     }
+    
     if ($password != $confirmpassowrd) {
         echo "<script> alert('Passwords do not match'); setTimeout(function(){ window.location.href = 'signup.php'; }, 100); </script>";
         exit();
     }
-    if ($password < 8) {
+    if ($password >= 3) {
         echo "<script> alert('Passwords too short'); setTimeout(function(){ window.location.href = 'signup.php'; }, 100); </script>";
         exit();
     }
@@ -37,7 +38,7 @@ if (isset($_POST['submit'])) {
         echo "<script> alert('select gender'); setTimeout(function(){ window.location.href = 'signup.php'; }, 100); </script>";
         exit();
     }
-    if (!preg_match('/^\d{10,17}$/', $cnic)) {
+    if (!preg_match('/^\d{10,15}$/', $cnic)) {
         echo "<script> alert('Invalid Bangladeshi NID (should be 10-17 digits)'); setTimeout(function(){ window.location.href = 'signup.php'; }, 100); </script>";
         exit();
     }

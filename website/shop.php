@@ -135,7 +135,7 @@ session_start();
             $price = $row['price'];
             $cat = $row['category'];
             $img = $row['img'];
-            $brand = $row['brand']; // Directly fetch brand from the database
+            $brand = $row['brand']; 
 
             $query2 = "SELECT pid, AVG(rating) AS average_rating FROM reviews WHERE pid = $pid GROUP BY pid";
 

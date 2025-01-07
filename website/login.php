@@ -3,17 +3,19 @@ session_start();
 
 include("include/connect.php");
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {  //checks if the login form is submitted via the POST method.
 
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = $_POST['password'];//gets the username and password entered by the user.
 
     $query = "SELECT * FROM accounts WHERE username='$username' AND password='$password'";
+    //checks the accounts table for a record where the username and password match the user's input.
 
     $result = mysqli_query($con, $query);
+    //executes the query and stores the result in $result.
 
-    if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
+    if (mysqli_num_rows($result) > 0) {// checks if the number of row is greater than 0
+        $row = mysqli_fetch_assoc($result); //retrieves the first matching row from the result set as an associative array.
         $_SESSION['aid'] = $row['aid'];
         header("Location: profile.php");
         exit();

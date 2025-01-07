@@ -13,8 +13,8 @@ if (isset($_SESSION['aid']) && $_SESSION['aid'] != -1) {
     }
 }
 
-// Clear the session variables
-$_SESSION = array();
+// // Clear the session variables
+// $_SESSION = array();
 
 // Destroy the session
 session_destroy();
