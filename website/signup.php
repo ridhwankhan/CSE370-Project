@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
         echo "<script> alert('Passwords do not match'); setTimeout(function(){ window.location.href = 'signup.php'; }, 100); </script>";
         exit();
     }
-    if ($password >= 3) {
+    if ($password < 3) {
         echo "<script> alert('Passwords too short'); setTimeout(function(){ window.location.href = 'signup.php'; }, 100); </script>";
         exit();
     }
